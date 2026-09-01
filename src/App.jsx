@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import DNAHero from './components/DNAHero';
 import AcademicPartners from './components/AcademicPartners';
 import Vision from './components/Vision';
@@ -15,7 +14,7 @@ import { Video, Image as ImageIcon, Sparkles, Dna, ArrowRight, ArrowUpRight } fr
 import MagicButton from './components/ui/MagicButton';
 
 export default function App() {
-  const [heroType, setHeroType] = useState('scroll-expand'); // 'scroll-expand' | 'dna' | 'aurora'
+  const [heroType, setHeroType] = useState('scroll-expand'); // 'scroll-expand' | 'dna'
   const [mediaType, setMediaType] = useState('image'); // 'video' | 'image'
 
   // Curated high-res assets for CONGRATA 2026
@@ -44,7 +43,7 @@ export default function App() {
       {/* Navigation Header */}
       <Navbar />
 
-      {/* Floating Mode Switcher Bar */}
+      {/* Floating Mode Switcher Bar (3 Core Variants) */}
       <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 p-1.5 rounded-2xl glass-panel shadow-2xl border border-white/15 backdrop-blur-2xl">
         <div className="flex items-center gap-1 bg-white/5 rounded-xl p-1">
           <button
@@ -87,18 +86,6 @@ export default function App() {
           >
             <Dna className="w-3.5 h-3.5" />
             <span>DNA Video Hero</span>
-          </button>
-
-          <button
-            onClick={() => setHeroType('aurora')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-              heroType === 'aurora'
-                ? 'bg-gradient-to-r from-amber-400 to-orange-400 text-slate-950 shadow-md'
-                : 'text-slate-300 hover:text-white'
-            }`}
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Aurora Hero</span>
           </button>
         </div>
       </div>
@@ -156,20 +143,9 @@ export default function App() {
             <TeamSection />
             <CTASection />
           </ScrollExpandMedia>
-        ) : heroType === 'dna' ? (
-          <>
-            <DNAHero />
-            <Vision />
-            <PillarsBento />
-            <Impact />
-            <CredibilitySnapshot />
-            <TeamSection />
-            <CTASection />
-          </>
         ) : (
           <>
-            <Hero />
-            <AcademicPartners />
+            <DNAHero />
             <Vision />
             <PillarsBento />
             <Impact />

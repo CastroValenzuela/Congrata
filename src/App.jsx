@@ -17,9 +17,9 @@ import MagicButton from './components/ui/MagicButton';
 
 export default function App() {
   const videoMedia = {
-    src: 'https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYuZ5R8ahEEZ4aQK56LizRdfBSqeDMsmUIrJN1',
-    poster: 'https://images.pexels.com/videos/5752729/space-earth-universe-cosmos-5752729.jpeg',
-    bgImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2560&auto=format&fit=crop',
+    src: 'https://assets.mixkit.co/videos/preview/mixkit-waterfall-in-forest-2213-large.mp4',
+    poster: 'https://images.unsplash.com/photo-1546587348-d12660c30c50?q=80&w=1200&auto=format&fit=crop',
+    bgImage: '/images/ban-gioc-falls.jpg',
     title: 'CONGRATA GLOBAL',
     date: 'TRANSNATIONAL MOBILITY',
     scrollToExpand: 'Scroll down to expand',

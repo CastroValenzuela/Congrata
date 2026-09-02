@@ -20,7 +20,7 @@ export default function Navbar() {
     { name: "Founder's Story", href: '#founder' },
     { name: 'Impact', href: '#impact' },
     { name: 'Alumni Stories', href: '#experiences' },
-    { name: 'Management Team', href: '#team' },
+    { name: 'Mentors & Leadership', href: '#team' },
     { name: 'Engage', href: '#engage' },
   ];
 

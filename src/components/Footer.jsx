@@ -59,7 +59,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#team" className="text-slate-400 hover:text-white transition-colors">
-                  Management Team
+                  Our Mentors & Leadership
                 </a>
               </li>
             </ul>

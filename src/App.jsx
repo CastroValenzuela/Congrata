@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import DNAHero from './components/DNAHero';
 import AcademicPartners from './components/AcademicPartners';
-import Vision from './components/Vision';
+import AboutSection from './components/AboutSection';
+import ProgramsSection from './components/ProgramsSection';
 import PillarsBento from './components/PillarsBento';
+import FoundersStory from './components/FoundersStory';
 import Impact from './components/Impact';
+import GraduateExperiences from './components/GraduateExperiences';
 import CredibilitySnapshot from './components/CredibilitySnapshot';
 import TeamSection from './components/TeamSection';
 import CTASection from './components/CTASection';
@@ -43,7 +46,7 @@ export default function App() {
       {/* Navigation Header */}
       <Navbar />
 
-      {/* Floating Mode Switcher Bar (3 Core Variants) */}
+      {/* Floating Mode Switcher Bar */}
       <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 p-1.5 rounded-2xl glass-panel shadow-2xl border border-white/15 backdrop-blur-2xl">
         <div className="flex items-center gap-1 bg-white/5 rounded-xl p-1">
           <button
@@ -136,9 +139,12 @@ export default function App() {
             <AcademicPartners />
 
             {/* Structured Landing Page Sections */}
-            <Vision />
+            <AboutSection />
+            <ProgramsSection />
             <PillarsBento />
+            <FoundersStory />
             <Impact />
+            <GraduateExperiences />
             <CredibilitySnapshot />
             <TeamSection />
             <CTASection />
@@ -146,9 +152,12 @@ export default function App() {
         ) : (
           <>
             <DNAHero />
-            <Vision />
+            <AboutSection />
+            <ProgramsSection />
             <PillarsBento />
+            <FoundersStory />
             <Impact />
+            <GraduateExperiences />
             <CredibilitySnapshot />
             <TeamSection />
             <CTASection />

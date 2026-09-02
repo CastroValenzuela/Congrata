@@ -16,10 +16,12 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'About Us', href: '#about' },
-    { name: 'Our Programs', href: '#programs' },
-    { name: 'Our Impact', href: '#impact' },
-    { name: 'Mentors & Team', href: '#team' },
-    { name: 'Engage with Us', href: '#engage' },
+    { name: 'Programs', href: '#programs' },
+    { name: "Founder's Story", href: '#founder' },
+    { name: 'Impact', href: '#impact' },
+    { name: 'Alumni Stories', href: '#experiences' },
+    { name: 'Mentors', href: '#team' },
+    { name: 'Engage', href: '#engage' },
   ];
 
   return (

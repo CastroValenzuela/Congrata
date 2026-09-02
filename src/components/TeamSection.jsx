@@ -14,13 +14,13 @@ export default function TeamSection() {
         <div className="flex flex-col items-center text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold uppercase tracking-wider text-cyan-400 mb-4 border border-cyan-500/20">
             <Users2 className="w-3.5 h-3.5" />
-            <span>Advisory & Leadership</span>
+            <span>Executive & Academic Leadership</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 font-heading">
             Our Mentors & <span className="text-gradient-cyan">Leadership</span>
           </h2>
-          <p className="text-slate-400 max-w-2xl text-base sm:text-lg leading-relaxed">
-            An interdisciplinary council of educators, university researchers, and social entrepreneurs dedicated to expanding opportunities for emerging scientific talent.
+          <p className="text-slate-400 max-w-2xl text-base sm:text-lg leading-relaxed font-light">
+            Guiding first-generation STEM innovators through transnational academic research, Silicon Valley financial governance, and global university alliances.
           </p>
         </div>
 

@@ -175,8 +175,8 @@ export const ScrollExpandMedia = ({
               }}
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#090D16]/60 via-[#090D16]/40 to-[#090D16]" />
-            <div className="absolute inset-0 bg-grid-subtle opacity-40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#090D16]/35 via-transparent to-[#090D16]" />
+            <div className="absolute inset-0 bg-grid-subtle opacity-10" />
           </motion.div>
 
           <div className="container mx-auto flex flex-col items-center justify-start relative z-10">

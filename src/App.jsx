@@ -20,22 +20,21 @@ export default function App() {
   const [heroType, setHeroType] = useState('scroll-expand'); // 'scroll-expand' | 'dna'
   const [mediaType, setMediaType] = useState('image'); // 'video' | 'image'
 
-  // Curated high-res assets for CONGRATA 2026
   const mediaContent = {
     video: {
       src: 'https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYuZ5R8ahEEZ4aQK56LizRdfBSqeDMsmUIrJN1',
       poster: 'https://images.pexels.com/videos/5752729/space-earth-universe-cosmos-5752729.jpeg',
-      bgImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop',
-      title: 'CONGRATA',
+      bgImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2560&auto=format&fit=crop',
+      title: 'CONGRATA GLOBAL',
       date: 'TRANSNATIONAL MOBILITY',
-      scrollToExpand: 'Desplázate hacia abajo para expandir',
+      scrollToExpand: 'Scroll down to expand',
     },
     image: {
       src: '/images/hero-scholars.jpg',
-      bgImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop',
-      title: 'CONGRATA',
-      date: 'FIRST-GEN STEM SCHOLARS',
-      scrollToExpand: 'Desplázate hacia abajo para expandir',
+      bgImage: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2560&auto=format&fit=crop',
+      title: 'CONGRATA SCHOLARS',
+      date: 'FIRST-GEN STEM LEADERSHIP',
+      scrollToExpand: 'Scroll down to expand',
     },
   };
 

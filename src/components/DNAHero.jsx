@@ -41,11 +41,11 @@ export function DNAHero() {
           <div className="relative z-10 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-6 border border-cyan-400/30">
               <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Transnational STEM Discovery • 2026 Edition</span>
+              <span>Transnational STEM Discovery & Innovation</span>
             </div>
 
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-[1.1] font-heading">
-              CONGRATA PAGE <span className="text-gradient-cyan">2026</span>
+              CONGRATA <span className="text-gradient-cyan">FOUNDATION</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-slate-200 font-light leading-relaxed mb-6">

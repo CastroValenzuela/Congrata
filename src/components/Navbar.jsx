@@ -43,9 +43,6 @@ export default function Navbar() {
                 className="h-8 sm:h-9 w-auto object-contain brightness-110 drop-shadow-[0_0_15px_rgba(45,212,191,0.25)] group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono font-bold tracking-wider uppercase rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-              2026
-            </span>
           </a>
 
           {/* Desktop Navigation */}

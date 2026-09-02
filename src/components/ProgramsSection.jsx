@@ -114,7 +114,7 @@ export default function ProgramsSection() {
                 </div>
 
                 <div className="text-3xl sm:text-4xl font-extrabold text-white mb-2 font-heading">
-                  Cohort 2026-2027
+                  Global Scholars Cohort
                 </div>
 
                 <div className="flex items-center gap-2 text-slate-300 text-sm mb-6">

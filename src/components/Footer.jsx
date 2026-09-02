@@ -14,9 +14,6 @@ export default function Footer() {
                 alt="CONGRATA Logo"
                 className="h-9 w-auto object-contain brightness-110"
               />
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-cyan-500/20">
-                2026
-              </span>
             </div>
             <p className="text-sm text-slate-400 max-w-md leading-relaxed font-light">
               Empowering trailblazers to cross boundaries, build global scientific connections, and create lasting economic, cultural, and community impact.

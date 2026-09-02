@@ -26,14 +26,14 @@ export default function App() {
       src: 'https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYuZ5R8ahEEZ4aQK56LizRdfBSqeDMsmUIrJN1',
       poster: 'https://images.pexels.com/videos/5752729/space-earth-universe-cosmos-5752729.jpeg',
       bgImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop',
-      title: 'CONGRATA 2026',
+      title: 'CONGRATA',
       date: 'TRANSNATIONAL MOBILITY',
       scrollToExpand: 'Desplázate hacia abajo para expandir',
     },
     image: {
       src: '/images/hero-scholars.jpg',
       bgImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop',
-      title: 'CONGRATA 2026',
+      title: 'CONGRATA',
       date: 'FIRST-GEN STEM SCHOLARS',
       scrollToExpand: 'Desplázate hacia abajo para expandir',
     },
@@ -111,7 +111,7 @@ export default function App() {
             <div className="max-w-4xl mx-auto text-center pt-8 pb-10">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-pill text-xs sm:text-sm font-medium text-cyan-300 mb-6 border border-cyan-400/30">
                 <Sparkles className="w-4 h-4 text-cyan-400" />
-                <span>Empowering Global STEM Innovators • 2026 Edition</span>
+                <span>Empowering Global STEM Innovators & Trailblazers</span>
               </div>
 
               <h2 className="text-2xl sm:text-4xl font-light text-slate-100 mb-6 leading-relaxed">

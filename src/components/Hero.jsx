@@ -55,15 +55,15 @@ export default function Hero() {
               <span className="absolute inset-0 -translate-x-full group-hover:animate-shimmer bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent pointer-events-none" />
               <span className="flex h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
               <span className="text-slate-300">Empowering Global STEM Innovators</span>
-              <span className="text-cyan-400 font-semibold tracking-wide">• 2026 Edition</span>
+              <span className="text-cyan-400 font-semibold tracking-wide">• Transnational Impact</span>
             </div>
           </motion.div>
 
           {/* Text Reveal Animated Main Title */}
           <motion.div variants={itemVariants} className="mb-6">
             <TextReveal
-              text="CONGRATA PAGE 2026"
-              highlight="2026"
+              text="CONGRATA FOUNDATION"
+              highlight="FOUNDATION"
               highlightClass="text-gradient-cyan"
               className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white leading-[1.08] font-heading"
               delay={0.15}

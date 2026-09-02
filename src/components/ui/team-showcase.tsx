@@ -76,6 +76,17 @@ export const ALL_TEAM_MEMBERS: TeamMember[] = [
     image: '/images/team/celestino-fernandez.jpg',
     social: { linkedin: '#' },
   },
+  {
+    id: '6',
+    category: 'scientific',
+    name: 'Dr. Luciana Astiz',
+    credentials: 'PhD.',
+    role: 'PROGRAM DIRECTOR, EDUCATION & HUMAN RESOURCES – NSF',
+    institution: 'National Science Foundation • CALTECH (Ph.D.) • UNAM (B.S.) • UC San Diego',
+    bio: 'Earned her doctoral degree from CALTECH and her BS degree from UNAM in geophysics. Her research expertise is in international seismology, including earthquake sources, tectonics, hazard assessment, and instrumentation. At the UC San Diego Array Network Facility, she managed data quality monitoring, instrumental calibrations, measurement of data performance, data retrieval, and assessment of data quality of broadband seismic data recordings across the continental U.S.',
+    image: '/images/team/luciana-astiz.jpg',
+    social: { linkedin: '#' },
+  },
 ];
 
 interface TeamShowcaseProps {
@@ -95,17 +106,17 @@ export default function TeamShowcase({ className }: TeamShowcaseProps) {
   const activeMember = ALL_TEAM_MEMBERS.find((m) => m.id === hoveredId) || ALL_TEAM_MEMBERS[0];
 
   return (
-    <div className={cn("flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 select-none w-full max-w-6xl mx-auto py-2 font-sans", className)}>
+    <div className={cn("flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 select-none w-full max-w-6xl mx-auto font-sans overflow-hidden", className)}>
       
-      {/* ── Left: Staggered 3-Column Interactive Photo Grid ── */}
-      <div className="flex gap-3 sm:gap-4 flex-shrink-0 overflow-x-auto pb-2 lg:pb-0">
+      {/* ── Left: Staggered 3-Column Interactive Photo Grid (No scrollbars) ── */}
+      <div className="flex gap-3 sm:gap-4 flex-shrink-0 justify-center w-full lg:w-auto no-scrollbar overflow-visible py-2">
         {/* Column 1 */}
         <div className="flex flex-col gap-3 sm:gap-4">
           {col1.map((member) => (
             <PhotoCard
               key={member.id}
               member={member}
-              className="w-[125px] h-[140px] sm:w-[150px] sm:h-[165px]"
+              className="w-[105px] h-[120px] sm:w-[130px] sm:h-[145px] lg:w-[135px] lg:h-[150px]"
               hoveredId={hoveredId}
               onHover={setHoveredId}
             />
@@ -113,12 +124,12 @@ export default function TeamShowcase({ className }: TeamShowcaseProps) {
         </div>
 
         {/* Column 2 (Offset Top) */}
-        <div className="flex flex-col gap-3 sm:gap-4 mt-[36px] sm:mt-[48px]">
+        <div className="flex flex-col gap-3 sm:gap-4 mt-[28px] sm:mt-[36px]">
           {col2.map((member) => (
             <PhotoCard
               key={member.id}
               member={member}
-              className="w-[130px] h-[145px] sm:w-[155px] sm:h-[170px]"
+              className="w-[110px] h-[125px] sm:w-[135px] sm:h-[150px] lg:w-[140px] lg:h-[155px]"
               hoveredId={hoveredId}
               onHover={setHoveredId}
             />
@@ -126,12 +137,12 @@ export default function TeamShowcase({ className }: TeamShowcaseProps) {
         </div>
 
         {/* Column 3 (Offset Top) */}
-        <div className="flex flex-col gap-3 sm:gap-4 mt-[18px] sm:mt-[24px]">
+        <div className="flex flex-col gap-3 sm:gap-4 mt-[14px] sm:mt-[18px]">
           {col3.map((member) => (
             <PhotoCard
               key={member.id}
               member={member}
-              className="w-[125px] h-[140px] sm:w-[150px] sm:h-[165px]"
+              className="w-[105px] h-[120px] sm:w-[130px] sm:h-[145px] lg:w-[135px] lg:h-[150px]"
               hoveredId={hoveredId}
               onHover={setHoveredId}
             />
@@ -140,11 +151,11 @@ export default function TeamShowcase({ className }: TeamShowcaseProps) {
       </div>
 
       {/* ── Right: Grouped Lists (Management Team & Scientific Board) ── */}
-      <div className="flex flex-col gap-6 pt-1 flex-1 w-full">
+      <div className="flex flex-col gap-5 pt-1 flex-1 w-full no-scrollbar">
         
         {/* Category 1: Management Team */}
         <div>
-          <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/10">
+          <div className="flex items-center gap-2 mb-2.5 pb-2 border-b border-white/10">
             <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#22D3EE]" />
             <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-300">
               Management Team
@@ -164,7 +175,7 @@ export default function TeamShowcase({ className }: TeamShowcaseProps) {
 
         {/* Category 2: Scientific Board */}
         <div>
-          <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/10">
+          <div className="flex items-center gap-2 mb-2.5 pb-2 border-b border-white/10">
             <span className="w-2 h-2 rounded-full bg-teal-400 shadow-[0_0_8px_#2DD4BF]" />
             <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-teal-300">
               Scientific Board & Academic Advisors
@@ -184,8 +195,8 @@ export default function TeamShowcase({ className }: TeamShowcaseProps) {
 
         {/* Dynamic Bio & Credentials Inspection Box */}
         {activeMember && (
-          <div className="p-5 sm:p-6 rounded-2xl glass-panel border border-cyan-500/25 bg-gradient-to-br from-cyan-950/30 via-white/[0.02] to-transparent shadow-xl transition-all duration-300">
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+          <div className="p-5 rounded-2xl glass-panel border border-cyan-500/25 bg-gradient-to-br from-cyan-950/30 via-white/[0.02] to-transparent shadow-xl transition-all duration-300">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
               <div className="flex items-center gap-2">
                 <span className="text-sm font-bold text-white font-heading">
                   {activeMember.name}
@@ -201,13 +212,13 @@ export default function TeamShowcase({ className }: TeamShowcaseProps) {
               </span>
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-light mb-3">
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-light mb-2.5">
               {activeMember.bio}
             </p>
 
             {activeMember.institution && (
-              <div className="pt-3 border-t border-white/10 flex items-start gap-2 text-[11px] font-mono text-teal-300/90">
-                <GraduationCap className="w-4 h-4 flex-shrink-0 text-teal-400 mt-0.5" />
+              <div className="pt-2.5 border-t border-white/10 flex items-start gap-2 text-[11px] font-mono text-teal-300/90">
+                <GraduationCap className="w-3.5 h-3.5 flex-shrink-0 text-teal-400 mt-0.5" />
                 <span>{activeMember.institution}</span>
               </div>
             )}
@@ -284,37 +295,37 @@ function MemberRow({
   return (
     <div
       className={cn(
-        'cursor-pointer transition-all duration-300 p-2.5 sm:p-3 rounded-xl border',
+        'cursor-pointer transition-all duration-300 p-2 sm:p-2.5 rounded-xl border',
         isDimmed ? 'opacity-50 border-transparent' : 'opacity-100',
         isActive ? 'bg-white/[0.05] backdrop-blur-md border-cyan-500/30 shadow-md' : 'hover:bg-white/[0.02] border-transparent'
       )}
       onMouseEnter={() => onHover(member.id)}
     >
       <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <span
             className={cn(
-              'h-2.5 rounded-full flex-shrink-0 transition-all duration-300',
-              isActive ? 'bg-cyan-400 w-6 shadow-[0_0_10px_#22D3EE]' : 'bg-white/20 w-3',
+              'h-2 rounded-full flex-shrink-0 transition-all duration-300',
+              isActive ? 'bg-cyan-400 w-5 shadow-[0_0_10px_#22D3EE]' : 'bg-white/20 w-2.5',
             )}
           />
           <div>
             <div className="flex items-center gap-2">
               <span
                 className={cn(
-                  'text-sm sm:text-base font-bold leading-none tracking-tight transition-colors duration-300 font-heading',
+                  'text-xs sm:text-sm font-bold leading-none tracking-tight transition-colors duration-300 font-heading',
                   isActive ? 'text-white' : 'text-slate-300',
                 )}
               >
                 {member.name}
               </span>
               {member.credentials && (
-                <span className="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-1.5 py-0.2 rounded border border-cyan-500/20">
+                <span className="text-[9px] font-mono text-cyan-400 bg-cyan-500/10 px-1.5 py-0.2 rounded border border-cyan-500/20">
                   {member.credentials}
                 </span>
               )}
             </div>
-            <p className="mt-1 text-[10px] sm:text-xs font-mono font-medium uppercase tracking-[0.12em] text-cyan-300/80">
+            <p className="mt-0.5 text-[9px] sm:text-[10px] font-mono font-medium uppercase tracking-[0.1em] text-cyan-300/80">
               {member.role}
             </p>
           </div>
@@ -327,8 +338,8 @@ function MemberRow({
               isActive ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2 pointer-events-none'
             )}
           >
-            <span className="p-1.5 rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-cyan-500/10 transition-all">
-              <FaLinkedinIn size={12} />
+            <span className="p-1 rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-cyan-500/10 transition-all">
+              <FaLinkedinIn size={11} />
             </span>
           </div>
         )}

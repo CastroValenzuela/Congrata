@@ -15,6 +15,7 @@ interface ScrollExpandMediaProps {
   posterSrc?: string;
   bgImageSrc: string;
   title?: string;
+  subtitle?: string;
   date?: string;
   scrollToExpand?: string;
   textBlend?: boolean;
@@ -27,7 +28,8 @@ export const ScrollExpandMedia = ({
   posterSrc,
   bgImageSrc,
   title = 'CONGRATA GLOBAL',
-  date = 'TRANSNATIONAL MOBILITY',
+  subtitle = 'Consortium for Green Research and Technology Advancement',
+  date = 'TRANSNATIONAL GREEN RESEARCH',
   scrollToExpand = 'Scroll down to expand',
   textBlend = false,
   children,
@@ -44,8 +46,8 @@ export const ScrollExpandMedia = ({
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const springConfig = { damping: 25, stiffness: 120 };
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), springConfig);
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), springConfig);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [5, -5]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (mediaFullyExpanded) return;
@@ -174,7 +176,6 @@ export const ScrollExpandMedia = ({
     };
   }, [scrollProgress, mediaFullyExpanded, touchStartY]);
 
-  // Proportions: Starting as an art gallery floating piece (380px x 500px) expanding to 100vw x 100vh
   const baseWidth = isMobileState ? 290 : 380;
   const baseHeight = isMobileState ? 390 : 510;
   const mediaWidth = baseWidth + scrollProgress * (isMobileState ? 700 : 1300);
@@ -187,7 +188,7 @@ export const ScrollExpandMedia = ({
   return (
     <div
       ref={sectionRef}
-      className="relative w-full overflow-x-hidden bg-[#090D16]"
+      className="relative w-full overflow-x-hidden bg-[#F8FAF9]"
     >
       {/* ── 100dvh Hero Stage with 3D Mouse Parallax ── */}
       <div 
@@ -206,10 +207,10 @@ export const ScrollExpandMedia = ({
           <img
             src={bgImageSrc}
             alt="Hero Panoramic Background"
-            className="w-full h-full object-cover object-center filter brightness-95 contrast-100"
+            className="w-full h-full object-cover object-center filter brightness-100 contrast-100"
           />
-          {/* Subtle natural lighting vignette */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#090D16]/25 via-transparent to-[#090D16]/80" />
+          {/* Natural soft atmosphere gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-[#F8FAF9]" />
         </motion.div>
 
         {/* ── Central Pixel-Perfect Puzzle Piece Panel (The Floating Artwork) ── */}
@@ -223,7 +224,7 @@ export const ScrollExpandMedia = ({
             maxHeight: '92vh',
             transformStyle: 'preserve-3d',
           }}
-          className="absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-3xl overflow-hidden border-2 border-white/40 shadow-[0_30px_100px_rgba(0,0,0,0.92)] ring-1 ring-cyan-400/30 backdrop-blur-[1px]"
+          className="absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-3xl overflow-hidden border-2 border-white/80 shadow-[0_30px_100px_rgba(21,115,107,0.35)] ring-2 ring-[#4EA840]/30 backdrop-blur-[1px]"
         >
           {/* 100% Synchronized Puzzle-Piece Viewport Anchor */}
           <div
@@ -239,7 +240,7 @@ export const ScrollExpandMedia = ({
             <img
               src={bgImageSrc}
               alt="Synchronized Artwork Piece"
-              className="w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110"
+              className="w-full h-full object-cover object-center filter brightness-105 contrast-105 saturate-110"
             />
 
             {/* Living Motion Video Overlay (Smoothly blended inside the puzzle piece) */}
@@ -257,17 +258,17 @@ export const ScrollExpandMedia = ({
               />
             )}
             
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/15" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/10" />
           </div>
 
-          {/* Glowing Border Reflection Accent (Shimmer line) */}
-          <div className="absolute inset-0 rounded-3xl border border-white/20 pointer-events-none shadow-[inset_0_0_25px_rgba(255,255,255,0.15)]" />
+          {/* Glowing Border Reflection Accent */}
+          <div className="absolute inset-0 rounded-3xl border border-white/40 pointer-events-none shadow-[inset_0_0_25px_rgba(255,255,255,0.25)]" />
 
           {/* Date / Subtitle Badge */}
           <div className="absolute bottom-6 left-0 right-0 flex flex-col items-center text-center z-20 px-4 pointer-events-none">
             {date && (
               <p
-                className="text-xs sm:text-sm font-mono font-semibold tracking-widest uppercase text-cyan-300 glass-pill px-4 py-1.5 rounded-full mb-2.5 border border-cyan-400/30 shadow-2xl backdrop-blur-md"
+                className="text-xs sm:text-sm font-mono font-bold tracking-widest uppercase text-emerald-950 bg-white/95 px-4 py-1.5 rounded-full mb-2.5 border border-emerald-500/30 shadow-2xl backdrop-blur-md"
                 style={{ transform: `translateX(-${textTranslateX}vw)` }}
               >
                 {date}
@@ -275,30 +276,30 @@ export const ScrollExpandMedia = ({
             )}
             {scrollToExpand && (
               <div
-                className="flex items-center gap-2 text-slate-200 text-xs font-medium bg-black/70 backdrop-blur-lg px-4 py-1.5 rounded-full border border-white/20 shadow-2xl"
+                className="flex items-center gap-2 text-white text-xs font-semibold bg-emerald-950/75 backdrop-blur-lg px-4 py-1.5 rounded-full border border-white/25 shadow-2xl"
                 style={{ transform: `translateX(${textTranslateX}vw)` }}
               >
-                <Mouse className="w-3.5 h-3.5 text-cyan-400 animate-bounce" />
+                <Mouse className="w-3.5 h-3.5 text-[#4EA840] animate-bounce" />
                 <span>{scrollToExpand}</span>
               </div>
             )}
           </div>
         </motion.div>
 
-        {/* Splitting Title Overlay (Artistic Typography in 3D Space) */}
+        {/* Splitting Title Overlay (Luminous Clean Typography) */}
         <div
           className={`flex items-center justify-center text-center gap-3 sm:gap-6 w-full relative z-20 flex-col sm:flex-row pointer-events-none select-none ${
             textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
           }`}
         >
           <motion.h2
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-white font-heading drop-shadow-[0_15px_45px_rgba(0,0,0,0.95)]"
+            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-white font-heading drop-shadow-[0_15px_45px_rgba(0,0,0,0.85)]"
             style={{ transform: `translateX(-${textTranslateX}vw)` }}
           >
             {firstWord}
           </motion.h2>
           <motion.h2
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-gradient-cyan font-heading drop-shadow-[0_15px_45px_rgba(0,0,0,0.95)]"
+            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-emerald-300 font-heading drop-shadow-[0_15px_45px_rgba(0,0,0,0.85)]"
             style={{ transform: `translateX(${textTranslateX}vw)` }}
           >
             {restOfTitle}
@@ -310,7 +311,7 @@ export const ScrollExpandMedia = ({
       {/* ── Content Revealed after Expansion ({children}) ── */}
       {showContent && (
         <motion.div
-          className="relative z-20 flex flex-col w-full bg-[#090D16] pb-16"
+          className="relative z-20 flex flex-col w-full bg-[#F8FAF9] pb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

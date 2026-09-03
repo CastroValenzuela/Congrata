@@ -5,13 +5,11 @@ import {
   Clock, 
   Calendar, 
   BrainCircuit, 
-  Globe, 
   FileCheck, 
   ArrowRight, 
   CheckCircle2,
   Sparkles
 } from 'lucide-react';
-import MagicButton from '@/components/ui/MagicButton';
 
 export default function ProgramsSection() {
   const journeySteps = [
@@ -42,61 +40,58 @@ export default function ProgramsSection() {
   ];
 
   return (
-    <section id="programs" className="py-24 relative overflow-hidden">
-      {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[500px] h-[500px] bg-teal-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
-
+    <section id="programs" className="py-24 relative overflow-hidden bg-[#F8FAF9]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold uppercase tracking-wider text-teal-400 mb-4 border border-teal-500/20">
-            <GraduationCap className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 text-xs font-bold uppercase tracking-wider text-[#15736B] mb-4 border border-emerald-300/50 shadow-sm">
+            <GraduationCap className="w-3.5 h-3.5 text-[#4EA840]" />
             <span>Academic Programs</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 font-heading">
-            Scholars <span className="text-gradient-cyan">Global Mobility</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4 font-heading">
+            Scholars <span className="text-gradient-green">Global Mobility</span>
           </h2>
-          <p className="text-slate-400 max-w-3xl text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 max-w-3xl text-base sm:text-lg leading-relaxed font-light">
             A transformative 60-day international research experience designed to expand the frontiers, analytical capabilities, and leadership of emerging STEM pioneers.
           </p>
         </div>
 
         {/* Featured 60-Day Immersive Card */}
-        <div className="glass-panel rounded-3xl p-8 sm:p-12 border border-white/10 mb-12 relative overflow-hidden shadow-2xl">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-emerald-900/10 mb-12 relative overflow-hidden shadow-xl shadow-emerald-950/5">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
             {/* Left Col: Narrative */}
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-mono font-semibold border border-cyan-500/20 mb-6">
-                <Sparkles className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-[#15736B] text-xs font-mono font-bold border border-emerald-200 mb-6">
+                <Sparkles className="w-3.5 h-3.5 text-[#4EA840]" />
                 <span>60-Day Immersive STEM Stays Abroad</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-snug font-heading">
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4 leading-snug font-heading">
                 Accelerating Master's & PhD Scientific Potential
               </h3>
 
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-light">
+              <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6 font-light">
                 During a 60-day period, STEM mobility scholars take selected assignments with the purpose of observing and learning new approaches to problem solving and research, while exchanging knowledge and learning about other cultures’ ways of living, decision making, and perceiving technological and economic advancements.
               </p>
 
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-300 text-sm">
+                  <CheckCircle2 className="w-5 h-5 text-[#4EA840] flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700 text-sm">
                     <strong>Deepen analytical thinking</strong> and strengthen cognitive, personal, and academic skills.
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-teal-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-300 text-sm">
+                  <CheckCircle2 className="w-5 h-5 text-[#15736B] flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700 text-sm">
                     <strong>Assertive decision-making</strong> and long-term scientific career projection.
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-300 text-sm">
+                  <CheckCircle2 className="w-5 h-5 text-[#4EA840] flex-shrink-0 mt-0.5" />
+                  <span className="text-slate-700 text-sm">
                     <strong>Comprehensive final report</strong> submitted and evaluated for continuing research pathways.
                   </span>
                 </div>
@@ -105,30 +100,34 @@ export default function ProgramsSection() {
 
             {/* Right Col: Application Callout Card */}
             <div className="lg:col-span-5 flex flex-col justify-center">
-              <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-cyan-400/30 bg-gradient-to-br from-cyan-950/40 via-slate-900/60 to-transparent relative overflow-hidden shadow-xl">
+              <div className="rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-emerald-50 via-teal-50/50 to-white border border-emerald-300/80 shadow-lg relative overflow-hidden">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono uppercase tracking-wider text-cyan-300 font-semibold">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[#15736B] font-bold">
                     Current Cycle
                   </span>
-                  <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="flex h-2.5 w-2.5 rounded-full bg-[#4EA840] animate-pulse" />
                 </div>
 
-                <div className="text-3xl sm:text-4xl font-extrabold text-white mb-2 font-heading">
+                <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2 font-heading">
                   Global Scholars Cohort
                 </div>
 
-                <div className="flex items-center gap-2 text-slate-300 text-sm mb-6">
-                  <Calendar className="w-4 h-4 text-cyan-400" />
-                  <span>Applications deadline: <strong className="text-white font-mono">Before May 2027</strong></span>
+                <div className="flex items-center gap-2 text-slate-600 text-sm mb-6">
+                  <Calendar className="w-4 h-4 text-[#15736B]" />
+                  <span>Applications deadline: <strong className="text-slate-900 font-mono">Before May 2027</strong></span>
                 </div>
 
-                <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                <p className="text-xs text-slate-600 leading-relaxed mb-6 font-light">
                   Open to enrolled Master’s and Doctoral researchers in STEM disciplines from recognized academic institutions.
                 </p>
 
-                <MagicButton href="#engage" variant="primary" icon={ArrowRight} className="w-full justify-center">
-                  Apply for Global Mobility
-                </MagicButton>
+                <a 
+                  href="#engage" 
+                  className="w-full justify-center px-6 py-3.5 rounded-xl font-bold text-slate-950 bg-[#F5B942] hover:bg-[#E5A830] shadow-md shadow-amber-500/25 transition-all flex items-center gap-2 text-sm text-center"
+                >
+                  <span>Apply for Global Mobility</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
               </div>
             </div>
 
@@ -146,21 +145,21 @@ export default function ProgramsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-panel glass-panel-hover rounded-2xl p-6 border border-white/5 flex flex-col justify-between group"
+                className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-md hover:border-[#4EA840] hover:shadow-lg transition-all flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-black font-mono text-cyan-400/30 group-hover:text-cyan-400 transition-colors">
+                    <span className="text-2xl font-black font-mono text-[#15736B]/30 group-hover:text-[#4EA840] transition-colors">
                       {step.step}
                     </span>
-                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
-                      <Icon className="w-5 h-5" />
+                    <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-[#15736B] group-hover:scale-110 transition-transform">
+                      <Icon className="w-5 h-5 text-[#4EA840]" />
                     </div>
                   </div>
-                  <h4 className="text-base sm:text-lg font-bold text-white mb-2 font-heading">
+                  <h4 className="text-base sm:text-lg font-bold text-slate-900 mb-2 font-heading">
                     {step.title}
                   </h4>
-                  <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                  <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
                     {step.desc}
                   </p>
                 </div>

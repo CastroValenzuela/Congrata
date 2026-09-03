@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, GraduationCap, Quote, Building2, MapPin, ArrowUpRight } from 'lucide-react';
+import { Sparkles, GraduationCap, MapPin } from 'lucide-react';
 
 export default function GraduateExperiences() {
   const experiences = [
@@ -37,25 +37,25 @@ export default function GraduateExperiences() {
   ];
 
   return (
-    <section id="experiences" className="py-24 relative overflow-hidden bg-[#070A12]">
+    <section id="experiences" className="py-24 relative overflow-hidden bg-[#F8FAF9]">
       {/* Background Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-emerald-200/30 rounded-full blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold uppercase tracking-wider text-cyan-400 mb-4 border border-cyan-500/20">
-            <GraduationCap className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 text-xs font-bold uppercase tracking-wider text-[#15736B] mb-4 border border-emerald-300/50 shadow-sm">
+            <GraduationCap className="w-3.5 h-3.5 text-[#4EA840]" />
             <span>Alumni Voices</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-3 font-heading">
-            Beyond Our Own <span className="text-gradient-cyan">Boundaries</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-3 font-heading">
+            Beyond Our Own <span className="text-gradient-green">Boundaries</span>
           </h2>
-          <p className="text-cyan-300 font-medium text-base sm:text-lg mb-4">
+          <p className="text-[#15736B] font-bold text-base sm:text-lg mb-4">
             Graduate Experiences in Scientific Mobility
           </p>
-          <p className="text-slate-400 max-w-3xl text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-600 max-w-3xl text-sm sm:text-base leading-relaxed font-light">
             The experiences of our graduates speak to the transformative power of scientific mobility. Their stories offer a firsthand perspective on how working and learning across borders shapes not only their research, but also their confidence, aspirations, and vision for their scientific careers.
           </p>
         </div>
@@ -69,7 +69,7 @@ export default function GraduateExperiences() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.12 }}
-              className="glass-panel glass-panel-hover rounded-3xl p-7 border border-white/10 flex flex-col justify-between relative group shadow-xl"
+              className="bg-white rounded-3xl p-7 border border-slate-200/90 flex flex-col justify-between relative group shadow-lg shadow-slate-900/5 hover:border-[#4EA840] hover:shadow-xl transition-all"
             >
               <div>
                 {/* Scholar Header */}
@@ -78,44 +78,44 @@ export default function GraduateExperiences() {
                     <img
                       src={exp.image}
                       alt={exp.name}
-                      className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl object-cover border border-cyan-400/30 shadow-md group-hover:scale-105 transition-transform duration-300"
+                      className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl object-cover border border-emerald-300 shadow-md group-hover:scale-105 transition-transform duration-300"
                     />
-                    <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-cyan-400 border-2 border-[#090D16] flex items-center justify-center">
-                      <Sparkles className="w-2.5 h-2.5 text-slate-950" />
+                    <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-[#4EA840] border-2 border-white flex items-center justify-center">
+                      <Sparkles className="w-2.5 h-2.5 text-white" />
                     </span>
                   </div>
 
                   <div>
-                    <h4 className="text-base sm:text-lg font-bold text-white font-heading leading-tight">
+                    <h4 className="text-base sm:text-lg font-bold text-slate-900 font-heading leading-tight">
                       {exp.name}
                     </h4>
-                    <p className="text-xs font-mono text-cyan-300 font-semibold mt-0.5">
+                    <p className="text-xs font-mono text-[#15736B] font-bold mt-0.5">
                       {exp.field}
                     </p>
-                    <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mt-1">
-                      <MapPin className="w-3 h-3 text-teal-400 flex-shrink-0" />
+                    <div className="flex items-center gap-1.5 text-[11px] text-slate-500 mt-1">
+                      <MapPin className="w-3 h-3 text-[#4EA840] flex-shrink-0" />
                       <span className="line-clamp-1">{exp.institution}</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Subtitle / Advisors info */}
-                <div className="mb-4 px-3 py-1.5 rounded-xl bg-white/[0.03] border border-white/5 text-[11px] font-mono text-slate-400">
+                <div className="mb-4 px-3 py-1.5 rounded-xl bg-emerald-50/60 border border-emerald-100 text-[11px] font-mono text-slate-600">
                   {exp.advisors}
                 </div>
 
                 {/* Verbatim Scholar Quote */}
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed italic font-light relative">
+                <p className="text-slate-700 text-xs sm:text-sm leading-relaxed italic font-light relative">
                   "{exp.quote}"
                 </p>
               </div>
 
               {/* Bottom Tag */}
-              <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs">
-                <span className="text-[11px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-full border border-cyan-500/20">
+              <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+                <span className="text-[11px] font-mono font-bold text-[#15736B] bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
                   {exp.tag}
                 </span>
-                <span className="text-[11px] text-slate-400 glass-pill px-2.5 py-0.5 rounded-full border border-white/10">
+                <span className="text-[11px] font-semibold text-emerald-800 bg-emerald-100/60 px-2.5 py-0.5 rounded-full border border-emerald-200">
                   Verified Scholar
                 </span>
               </div>

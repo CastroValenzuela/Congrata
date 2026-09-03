@@ -108,7 +108,7 @@ export default function TeamShowcase({ className }: TeamShowcaseProps) {
   return (
     <div className={cn("flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 select-none w-full max-w-6xl mx-auto font-sans overflow-hidden", className)}>
       
-      {/* ── Left: Staggered 3-Column Interactive Photo Grid (No scrollbars) ── */}
+      {/* ── Left: Staggered 3-Column Interactive Photo Grid ── */}
       <div className="flex gap-3 sm:gap-4 flex-shrink-0 justify-center w-full lg:w-auto no-scrollbar overflow-visible py-2">
         {/* Column 1 */}
         <div className="flex flex-col gap-3 sm:gap-4">
@@ -155,9 +155,9 @@ export default function TeamShowcase({ className }: TeamShowcaseProps) {
         
         {/* Category 1: Management Team */}
         <div>
-          <div className="flex items-center gap-2 mb-2.5 pb-2 border-b border-white/10">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#22D3EE]" />
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-300">
+          <div className="flex items-center gap-2 mb-2.5 pb-2 border-b border-emerald-900/10">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#4EA840] shadow-[0_0_8px_#4EA840]" />
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#15736B]">
               Management Team
             </h4>
           </div>
@@ -175,9 +175,9 @@ export default function TeamShowcase({ className }: TeamShowcaseProps) {
 
         {/* Category 2: Scientific Board */}
         <div>
-          <div className="flex items-center gap-2 mb-2.5 pb-2 border-b border-white/10">
-            <span className="w-2 h-2 rounded-full bg-teal-400 shadow-[0_0_8px_#2DD4BF]" />
-            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-teal-300">
+          <div className="flex items-center gap-2 mb-2.5 pb-2 border-b border-emerald-900/10">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#15736B] shadow-[0_0_8px_#15736B]" />
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#15736B]">
               Scientific Board & Academic Advisors
             </h4>
           </div>
@@ -195,30 +195,30 @@ export default function TeamShowcase({ className }: TeamShowcaseProps) {
 
         {/* Dynamic Bio & Credentials Inspection Box */}
         {activeMember && (
-          <div className="p-5 rounded-2xl glass-panel border border-cyan-500/25 bg-gradient-to-br from-cyan-950/30 via-white/[0.02] to-transparent shadow-xl transition-all duration-300">
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+          <div className="p-6 rounded-3xl bg-white border border-emerald-500/20 shadow-xl shadow-emerald-950/5 transition-all duration-300">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-white font-heading">
+                <span className="text-base font-bold text-slate-900 font-heading">
                   {activeMember.name}
                 </span>
                 {activeMember.credentials && (
-                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                  <span className="text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-[#15736B] border border-emerald-200">
                     {activeMember.credentials}
                   </span>
                 )}
               </div>
-              <span className="text-[10px] font-mono text-slate-400 bg-white/5 px-2.5 py-0.5 rounded-md">
+              <span className="text-[10px] font-mono text-emerald-800 bg-emerald-50/80 px-2.5 py-0.5 rounded-md border border-emerald-200">
                 {activeMember.category === 'management' ? 'Management Team' : 'Scientific Board'}
               </span>
             </div>
 
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-light mb-2.5">
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light mb-3">
               {activeMember.bio}
             </p>
 
             {activeMember.institution && (
-              <div className="pt-2.5 border-t border-white/10 flex items-start gap-2 text-[11px] font-mono text-teal-300/90">
-                <GraduationCap className="w-3.5 h-3.5 flex-shrink-0 text-teal-400 mt-0.5" />
+              <div className="pt-3 border-t border-slate-100 flex items-start gap-2 text-[11px] font-mono text-[#15736B] font-semibold">
+                <GraduationCap className="w-4 h-4 flex-shrink-0 text-[#4EA840] mt-0.5" />
                 <span>{activeMember.institution}</span>
               </div>
             )}
@@ -252,10 +252,10 @@ function PhotoCard({
   return (
     <div
       className={cn(
-        'overflow-hidden rounded-2xl cursor-pointer flex-shrink-0 transition-all duration-400 border border-white/10 shadow-lg relative group',
+        'overflow-hidden rounded-2xl cursor-pointer flex-shrink-0 transition-all duration-300 border shadow-md relative group',
         className,
-        isDimmed ? 'opacity-40 scale-95' : 'opacity-100 scale-100',
-        isActive ? 'border-cyan-400/80 shadow-cyan-500/30 ring-2 ring-cyan-400/40 scale-105 z-10' : ''
+        isDimmed ? 'opacity-40 scale-95 border-slate-200' : 'opacity-100 scale-100 border-slate-200',
+        isActive ? 'border-[#4EA840] shadow-xl shadow-emerald-500/20 ring-2 ring-[#4EA840]/50 scale-105 z-10' : ''
       )}
       onMouseEnter={() => onHover(member.id)}
     >
@@ -264,11 +264,11 @@ function PhotoCard({
         alt={member.name}
         className="w-full h-full object-cover transition-all duration-500"
         style={{
-          filter: isActive ? 'grayscale(0) brightness(1.05)' : 'grayscale(1) brightness(0.65)',
+          filter: isActive ? 'grayscale(0) brightness(1.02)' : 'grayscale(0.8) brightness(0.9)',
         }}
       />
       {member.credentials && (
-        <span className="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded-md bg-[#090D16]/80 backdrop-blur-md text-[9px] font-mono font-bold text-cyan-300 border border-white/10">
+        <span className="absolute bottom-1.5 right-1.5 px-2 py-0.5 rounded-md bg-white/90 backdrop-blur-md text-[9px] font-mono font-bold text-[#15736B] border border-emerald-200 shadow-sm">
           {member.credentials}
         </span>
       )}
@@ -297,7 +297,7 @@ function MemberRow({
       className={cn(
         'cursor-pointer transition-all duration-300 p-2 sm:p-2.5 rounded-xl border',
         isDimmed ? 'opacity-50 border-transparent' : 'opacity-100',
-        isActive ? 'bg-white/[0.05] backdrop-blur-md border-cyan-500/30 shadow-md' : 'hover:bg-white/[0.02] border-transparent'
+        isActive ? 'bg-emerald-50/80 border-[#4EA840]/40 shadow-sm' : 'hover:bg-slate-50 border-transparent'
       )}
       onMouseEnter={() => onHover(member.id)}
     >
@@ -305,8 +305,8 @@ function MemberRow({
         <div className="flex items-center gap-2.5">
           <span
             className={cn(
-              'h-2 rounded-full flex-shrink-0 transition-all duration-300',
-              isActive ? 'bg-cyan-400 w-5 shadow-[0_0_10px_#22D3EE]' : 'bg-white/20 w-2.5',
+              'h-2.5 rounded-full flex-shrink-0 transition-all duration-300',
+              isActive ? 'bg-[#4EA840] w-5 shadow-[0_0_8px_#4EA840]' : 'bg-slate-300 w-2.5',
             )}
           />
           <div>
@@ -314,18 +314,18 @@ function MemberRow({
               <span
                 className={cn(
                   'text-xs sm:text-sm font-bold leading-none tracking-tight transition-colors duration-300 font-heading',
-                  isActive ? 'text-white' : 'text-slate-300',
+                  isActive ? 'text-slate-900' : 'text-slate-700',
                 )}
               >
                 {member.name}
               </span>
               {member.credentials && (
-                <span className="text-[9px] font-mono text-cyan-400 bg-cyan-500/10 px-1.5 py-0.2 rounded border border-cyan-500/20">
+                <span className="text-[9px] font-mono font-semibold text-[#15736B] bg-emerald-100/60 px-1.5 py-0.2 rounded border border-emerald-200">
                   {member.credentials}
                 </span>
               )}
             </div>
-            <p className="mt-0.5 text-[9px] sm:text-[10px] font-mono font-medium uppercase tracking-[0.1em] text-cyan-300/80">
+            <p className="mt-0.5 text-[9px] sm:text-[10px] font-mono font-semibold uppercase tracking-[0.1em] text-[#15736B]">
               {member.role}
             </p>
           </div>
@@ -338,8 +338,8 @@ function MemberRow({
               isActive ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2 pointer-events-none'
             )}
           >
-            <span className="p-1 rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-cyan-500/10 transition-all">
-              <FaLinkedinIn size={11} />
+            <span className="p-1 rounded-lg text-slate-500 hover:text-[#15736B] hover:bg-emerald-100 transition-all">
+              <FaLinkedinIn size={12} />
             </span>
           </div>
         )}

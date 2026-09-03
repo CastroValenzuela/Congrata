@@ -1,15 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Sparkles, 
   Users, 
   Building2, 
   Globe2, 
   BookOpenCheck, 
   TrendingUp, 
-  Plane, 
-  Network, 
-  ArrowUpRight 
 } from 'lucide-react';
 import { Globe } from '@/components/ui/globe';
 
@@ -38,22 +34,18 @@ export default function Impact() {
   ];
 
   return (
-    <section id="impact" className="py-24 relative overflow-hidden">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute top-1/3 right-10 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
-
+    <section id="impact" className="py-24 relative overflow-hidden bg-[#F8FAF9]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold uppercase tracking-wider text-cyan-400 mb-4 border border-cyan-500/20">
-            <TrendingUp className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 text-xs font-bold uppercase tracking-wider text-[#15736B] mb-4 border border-emerald-300/50 shadow-sm">
+            <TrendingUp className="w-3.5 h-3.5 text-[#4EA840]" />
             <span>Transnational Corridors</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 font-heading">
-            CONGRATA <span className="text-gradient-cyan">Impact</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4 font-heading">
+            CONGRATA <span className="text-gradient-green">Impact</span>
           </h2>
-          <p className="text-slate-400 max-w-3xl text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 max-w-3xl text-base sm:text-lg leading-relaxed font-light">
             Unlike traditional programs, CONGRATA mentors the next generation of interdisciplinary STEM innovators and globally minded leaders by integrating international mobility, cross-disciplinary collaboration, stewardship, and social entrepreneurship.
           </p>
         </div>
@@ -71,18 +63,18 @@ export default function Impact() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="glass-panel glass-panel-hover rounded-2xl p-5 sm:p-6 flex gap-4 sm:gap-5 relative overflow-hidden group"
+                  className="bg-white rounded-2xl p-5 sm:p-6 flex gap-4 sm:gap-5 relative overflow-hidden border border-slate-200/90 shadow-md hover:border-[#4EA840] hover:shadow-lg transition-all group"
                 >
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-105 transition-transform duration-300 shadow-md">
-                      <Icon className="w-6 h-6" />
+                    <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-[#15736B] group-hover:scale-105 transition-transform duration-300 shadow-sm">
+                      <Icon className="w-6 h-6 text-[#4EA840]" />
                     </div>
                   </div>
                   <div className="flex flex-col justify-center">
-                    <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 leading-snug font-heading">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 leading-snug font-heading">
                       {item.title}
                     </h3>
-                    <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
                       {item.desc}
                     </p>
                   </div>
@@ -97,17 +89,17 @@ export default function Impact() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-6 glass-panel rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-center relative overflow-hidden border border-cyan-500/20 shadow-2xl min-h-[520px]"
+            className="lg:col-span-6 bg-[#0F2D28] rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-center relative overflow-hidden border border-emerald-500/30 shadow-2xl min-h-[520px]"
           >
             {/* Top Badge & Interactive Hint */}
             <div className="w-full flex items-center justify-between z-10 mb-2">
               <div className="flex items-center gap-2">
-                <span className="flex h-2.5 w-2.5 rounded-full bg-cyan-400 animate-pulse" />
-                <span className="text-xs font-mono uppercase tracking-wider text-cyan-300 font-semibold">
+                <span className="flex h-2.5 w-2.5 rounded-full bg-[#4EA840] animate-pulse" />
+                <span className="text-xs font-mono uppercase tracking-wider text-emerald-300 font-bold">
                   Global Mobility Grid
                 </span>
               </div>
-              <span className="text-[11px] text-slate-400 glass-pill px-3 py-1 rounded-full border border-white/10">
+              <span className="text-[11px] text-emerald-100 bg-white/10 px-3 py-1 rounded-full border border-white/15">
                 🖱️ Drag to rotate globe
               </span>
             </div>
@@ -116,27 +108,27 @@ export default function Impact() {
             <div className="relative w-full aspect-square max-w-[480px] flex items-center justify-center">
               <Globe
                 size={480}
-                dotColor="rgba(34, 211, 238, ALPHA)"
-                arcColor="rgba(34, 211, 238, 0.45)"
-                markerColor="rgba(45, 212, 191, 1)"
+                dotColor="rgba(78, 168, 64, ALPHA)"
+                arcColor="rgba(78, 168, 64, 0.55)"
+                markerColor="rgba(245, 185, 66, 1)"
                 autoRotateSpeed={0.0018}
                 className="w-full h-full max-w-full"
               />
             </div>
 
             {/* Bottom Mobility Hub Badges */}
-            <div className="w-full pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-2 z-10">
-              <div className="flex items-center gap-2 text-xs text-slate-300">
-                <span className="w-2 h-2 rounded-full bg-cyan-400" />
+            <div className="w-full pt-4 border-t border-emerald-800 flex flex-wrap items-center justify-between gap-2 z-10">
+              <div className="flex items-center gap-2 text-xs text-emerald-100">
+                <span className="w-2 h-2 rounded-full bg-[#4EA840]" />
                 <span>UC California</span>
-                <span className="text-slate-500">↔</span>
-                <span className="w-2 h-2 rounded-full bg-teal-400" />
+                <span className="text-emerald-400">↔</span>
+                <span className="w-2 h-2 rounded-full bg-[#2DD4BF]" />
                 <span>Mexico City</span>
-                <span className="text-slate-500">↔</span>
-                <span className="w-2 h-2 rounded-full bg-indigo-400" />
+                <span className="text-emerald-400">↔</span>
+                <span className="w-2 h-2 rounded-full bg-[#F5B942]" />
                 <span>Global Hubs</span>
               </div>
-              <span className="text-[11px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-0.5 rounded-md border border-cyan-500/20">
+              <span className="text-[11px] font-mono font-bold text-emerald-300 bg-emerald-900/80 px-2.5 py-0.5 rounded-md border border-emerald-700">
                 Transnational Corridors
               </span>
             </div>

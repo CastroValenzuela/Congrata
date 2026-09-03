@@ -6,8 +6,8 @@ import React, {
   useState,
   ReactNode,
 } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Mouse, ChevronDown, Sparkles } from 'lucide-react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { Mouse, Sparkles, Compass } from 'lucide-react';
 
 interface ScrollExpandMediaProps {
   mediaType?: 'video' | 'image';
@@ -40,6 +40,27 @@ export const ScrollExpandMedia = ({
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
+  // 3D Mouse Parallax Tilt physics for museum-grade installation feel
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const springConfig = { damping: 25, stiffness: 120 };
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), springConfig);
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-6, 6]), springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (mediaFullyExpanded) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   useEffect(() => {
     setScrollProgress(0);
     setShowContent(false);
@@ -53,7 +74,7 @@ export const ScrollExpandMedia = ({
         e.preventDefault();
       } else if (!mediaFullyExpanded) {
         e.preventDefault();
-        const scrollDelta = e.deltaY * 0.0015;
+        const scrollDelta = e.deltaY * 0.0016;
         const newProgress = Math.min(
           Math.max(scrollProgress + scrollDelta, 0),
           1
@@ -153,9 +174,9 @@ export const ScrollExpandMedia = ({
     };
   }, [scrollProgress, mediaFullyExpanded, touchStartY]);
 
-  // Refined initial canvas proportions matching museum-grade installation aesthetics
+  // Proportions: Starting as an art gallery floating piece (380px x 500px) expanding to 100vw x 100vh
   const baseWidth = isMobileState ? 290 : 380;
-  const baseHeight = isMobileState ? 390 : 500;
+  const baseHeight = isMobileState ? 390 : 510;
   const mediaWidth = baseWidth + scrollProgress * (isMobileState ? 700 : 1300);
   const mediaHeight = baseHeight + scrollProgress * (isMobileState ? 300 : 500);
   const textTranslateX = scrollProgress * (isMobileState ? 150 : 130);
@@ -168,38 +189,61 @@ export const ScrollExpandMedia = ({
       ref={sectionRef}
       className="relative w-full overflow-x-hidden bg-[#090D16]"
     >
-      {/* ── 100dvh Hero Stage ── */}
-      <div className="relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
+      {/* ── 100dvh Hero Stage with 3D Mouse Parallax ── */}
+      <div 
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="relative w-full h-[100dvh] flex flex-col items-center justify-center overflow-hidden perspective-[1200px]"
+      >
         
-        {/* Background Panoramic Landscape Layer */}
+        {/* Background Panoramic Landscape Layer (The Base Wall) */}
         <motion.div
           className="absolute inset-0 z-0 w-full h-full pointer-events-none"
           initial={{ opacity: 1 }}
-          animate={{ opacity: 1 - scrollProgress * 0.55 }}
+          animate={{ opacity: 1 - scrollProgress * 0.5 }}
           transition={{ duration: 0.2 }}
         >
           <img
             src={bgImageSrc}
             alt="Hero Panoramic Background"
-            className="w-full h-full object-cover object-center scale-[1.02] filter brightness-105"
+            className="w-full h-full object-cover object-center filter brightness-95 contrast-100"
           />
           {/* Subtle natural lighting vignette */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#090D16]/25 via-transparent to-[#090D16]/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#090D16]/25 via-transparent to-[#090D16]/80" />
         </motion.div>
 
-        {/* Central Expanding Canvas Panel (Portal Effect) */}
-        <div
-          className="absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-3xl overflow-hidden border border-white/25 shadow-[0_25px_90px_rgba(0,0,0,0.85)] ring-1 ring-white/10"
+        {/* ── Central Pixel-Perfect Puzzle Piece Panel (The Floating Artwork) ── */}
+        <motion.div
           style={{
+            rotateX: mediaFullyExpanded ? 0 : rotateX,
+            rotateY: mediaFullyExpanded ? 0 : rotateY,
             width: `${mediaWidth}px`,
             height: `${mediaHeight}px`,
-            maxWidth: '96vw',
-            maxHeight: '90vh',
-            transition: 'border-radius 0.3s ease',
+            maxWidth: '98vw',
+            maxHeight: '92vh',
+            transformStyle: 'preserve-3d',
           }}
+          className="absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-3xl overflow-hidden border-2 border-white/40 shadow-[0_30px_100px_rgba(0,0,0,0.92)] ring-1 ring-cyan-400/30 backdrop-blur-[1px]"
         >
-          {mediaType === 'video' ? (
-            <div className="relative w-full h-full pointer-events-none">
+          {/* 100% Synchronized Puzzle-Piece Viewport Anchor */}
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none overflow-hidden"
+            style={{
+              width: '100vw',
+              height: '100dvh',
+              maxWidth: '100vw',
+              maxHeight: '100dvh',
+            }}
+          >
+            {/* Exactly matching image that aligns seamlessly with the background mural */}
+            <img
+              src={bgImageSrc}
+              alt="Synchronized Artwork Piece"
+              className="w-full h-full object-cover object-center filter brightness-110 contrast-105 saturate-110"
+            />
+
+            {/* Living Motion Video Overlay (Smoothly blended inside the puzzle piece) */}
+            {mediaType === 'video' && (
               <video
                 src={mediaSrc}
                 poster={posterSrc}
@@ -208,27 +252,22 @@ export const ScrollExpandMedia = ({
                 loop
                 playsInline
                 preload="auto"
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover opacity-75 mix-blend-screen"
                 controls={false}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-            </div>
-          ) : (
-            <div className="relative w-full h-full">
-              <img
-                src={mediaSrc}
-                alt={title || 'Media content'}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
-            </div>
-          )}
+            )}
+            
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/15" />
+          </div>
 
-          {/* Subtitle & Date Badge positioned inside the central canvas */}
+          {/* Glowing Border Reflection Accent (Shimmer line) */}
+          <div className="absolute inset-0 rounded-3xl border border-white/20 pointer-events-none shadow-[inset_0_0_25px_rgba(255,255,255,0.15)]" />
+
+          {/* Date / Subtitle Badge */}
           <div className="absolute bottom-6 left-0 right-0 flex flex-col items-center text-center z-20 px-4 pointer-events-none">
             {date && (
               <p
-                className="text-xs sm:text-sm font-mono font-semibold tracking-widest uppercase text-cyan-300 glass-pill px-4 py-1.5 rounded-full mb-2.5 border border-cyan-400/30 shadow-xl"
+                className="text-xs sm:text-sm font-mono font-semibold tracking-widest uppercase text-cyan-300 glass-pill px-4 py-1.5 rounded-full mb-2.5 border border-cyan-400/30 shadow-2xl backdrop-blur-md"
                 style={{ transform: `translateX(-${textTranslateX}vw)` }}
               >
                 {date}
@@ -236,7 +275,7 @@ export const ScrollExpandMedia = ({
             )}
             {scrollToExpand && (
               <div
-                className="flex items-center gap-2 text-slate-200 text-xs font-medium bg-black/65 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/15 shadow-xl"
+                className="flex items-center gap-2 text-slate-200 text-xs font-medium bg-black/70 backdrop-blur-lg px-4 py-1.5 rounded-full border border-white/20 shadow-2xl"
                 style={{ transform: `translateX(${textTranslateX}vw)` }}
               >
                 <Mouse className="w-3.5 h-3.5 text-cyan-400 animate-bounce" />
@@ -244,22 +283,22 @@ export const ScrollExpandMedia = ({
               </div>
             )}
           </div>
-        </div>
+        </motion.div>
 
-        {/* Splitting Title Overlay (Artistic Typography) */}
+        {/* Splitting Title Overlay (Artistic Typography in 3D Space) */}
         <div
           className={`flex items-center justify-center text-center gap-3 sm:gap-6 w-full relative z-20 flex-col sm:flex-row pointer-events-none select-none ${
             textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
           }`}
         >
           <motion.h2
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-white font-heading drop-shadow-[0_12px_40px_rgba(0,0,0,0.95)]"
+            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-white font-heading drop-shadow-[0_15px_45px_rgba(0,0,0,0.95)]"
             style={{ transform: `translateX(-${textTranslateX}vw)` }}
           >
             {firstWord}
           </motion.h2>
           <motion.h2
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-gradient-cyan font-heading drop-shadow-[0_12px_40px_rgba(0,0,0,0.95)]"
+            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-gradient-cyan font-heading drop-shadow-[0_15px_45px_rgba(0,0,0,0.95)]"
             style={{ transform: `translateX(${textTranslateX}vw)` }}
           >
             {restOfTitle}

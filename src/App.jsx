@@ -9,6 +9,8 @@ import Impact from './components/Impact';
 import GraduateExperiences from './components/GraduateExperiences';
 import CredibilitySnapshot from './components/CredibilitySnapshot';
 import TeamSection from './components/TeamSection';
+import PhilanthropySection from './components/PhilanthropySection';
+import FAQSection from './components/FAQSection';
 import Footer from './components/Footer';
 import ScrollExpandMedia from './components/ui/scroll-expansion-hero';
 import MetricIntroLoader from './components/ui/metric-intro-loader';
@@ -22,10 +24,12 @@ import MagicButton from './components/ui/MagicButton';
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState('scholar');
+  const [modalNote, setModalNote] = useState('');
 
   useEffect(() => {
     const handleOpenModal = (e) => {
       setModalType(e.detail?.type || 'scholar');
+      setModalNote(e.detail?.note || '');
       setIsModalOpen(true);
     };
     window.addEventListener('open-scholar-modal', handleOpenModal);
@@ -56,6 +60,7 @@ export default function App() {
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           defaultType={modalType}
+          defaultNote={modalNote}
         />
 
         {/* Metric-Style Signature Intro Transition */}
@@ -101,6 +106,7 @@ export default function App() {
                   type="button"
                   onClick={() => {
                     setModalType('scholar');
+                    setModalNote('');
                     setIsModalOpen(true);
                   }}
                   className="px-6 py-3 rounded-full text-sm font-bold text-slate-950 bg-[#F5B942] hover:bg-[#E5A830] shadow-md shadow-amber-500/25 transition-all flex items-center gap-2 cursor-pointer"
@@ -121,6 +127,7 @@ export default function App() {
                   type="button"
                   onClick={() => {
                     setModalType('endowment');
+                    setModalNote('Support Our Mission');
                     setIsModalOpen(true);
                   }}
                   className="px-6 py-3 rounded-full text-sm font-bold text-emerald-800 bg-emerald-100/70 hover:bg-emerald-100 border border-emerald-300/60 shadow-sm transition-all flex items-center gap-2 cursor-pointer"
@@ -143,6 +150,8 @@ export default function App() {
             <GraduateExperiences />
             <CredibilitySnapshot />
             <TeamSection />
+            <PhilanthropySection />
+            <FAQSection />
             <Footer />
           </ScrollExpandMedia>
         </main>

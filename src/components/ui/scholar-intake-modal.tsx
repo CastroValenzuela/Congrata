@@ -22,9 +22,10 @@ interface ScholarModalProps {
   isOpen: boolean;
   onClose: () => void;
   defaultType?: string;
+  defaultNote?: string;
 }
 
-export default function ScholarIntakeModal({ isOpen, onClose, defaultType = 'scholar' }: ScholarModalProps) {
+export default function ScholarIntakeModal({ isOpen, onClose, defaultType = 'scholar', defaultNote = '' }: ScholarModalProps) {
   const [step, setStep] = useState(1);
   const [profileType, setProfileType] = useState(defaultType);
   const [researchTrack, setResearchTrack] = useState('healthcare');
@@ -51,11 +52,14 @@ export default function ScholarIntakeModal({ isOpen, onClose, defaultType = 'sch
   // Reset state when opened
   useEffect(() => {
     if (isOpen) {
-      setStep(1);
+      setStep(defaultType === 'endowment' ? 3 : 1);
       setIsSubmitted(false);
       if (defaultType) setProfileType(defaultType);
+      if (defaultNote) {
+        setFormData((prev) => ({ ...prev, note: defaultNote }));
+      }
     }
-  }, [isOpen, defaultType]);
+  }, [isOpen, defaultType, defaultNote]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -120,7 +124,7 @@ export default function ScholarIntakeModal({ isOpen, onClose, defaultType = 'sch
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#0C2421] border border-emerald-500/30 text-xs text-left font-mono space-y-1.5 max-w-md mx-auto">
-                  <div className="text-slate-400">TARGET: <span className="text-white">{formData.email || 'glmobility@congrata.com'}</span></div>
+                  <div className="text-slate-400">ROUTING: <span className="text-white">luisa@congrata.com • Corona Del Mar, CA</span></div>
                   <div className="text-slate-400">AFFILIATION: <span className="text-white">{formData.institution || 'Recognized Graduate Program'}</span></div>
                   <div className="text-slate-400">TRACK: <span className="text-[#4EA840] uppercase">{researchTrack}</span></div>
                 </div>

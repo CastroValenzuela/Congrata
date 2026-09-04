@@ -15,13 +15,14 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'About Us', href: '#about' },
+    { name: 'About', href: '#about' },
     { name: 'Programs', href: '#programs' },
-    { name: "Founder's Story", href: '#founder' },
+    { name: 'Pillars', href: '#pillars' },
     { name: 'Impact', href: '#impact' },
-    { name: 'Alumni Stories', href: '#experiences' },
-    { name: 'Mentors & Leadership', href: '#team' },
-    { name: 'Contact Us', href: '#engage' },
+    { name: 'Leadership', href: '#team' },
+    { name: 'Giving', href: '#giving' },
+    { name: 'FAQ', href: '#faq' },
+    { name: 'Inquiries', href: '#faq' },
   ];
 
   return (

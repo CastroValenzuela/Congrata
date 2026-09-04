@@ -227,8 +227,8 @@ const MarqueeItem = () => (
 
 export function CinematicFooter() {
   const [copied, setCopied] = useState(false);
-  const email = "glmobility@congrata.com";
-  const contactEmail = "info@congrata.com";
+  const email = "luisa@congrata.com";
+  const contactEmail = "luisa@congrata.com";
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -440,7 +440,7 @@ export function CinematicFooter() {
               <div className="space-y-1.5 text-xs sm:text-sm text-slate-300 font-light">
                 <div className="flex items-start gap-2">
                   <MapPin className="w-3.5 h-3.5 text-[#4EA840] shrink-0 mt-0.5" />
-                  <span>Corona Del Mar, CA • P.O. Box 1197</span>
+                  <span>Corona Del Mar, CA 92625 • P.O. Box 1197</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Phone className="w-3.5 h-3.5 text-[#4EA840] shrink-0" />
@@ -450,8 +450,8 @@ export function CinematicFooter() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5 text-[#4EA840] shrink-0" />
-                  <a href="mailto:info@congrata.com" className="hover:text-white transition-colors">
-                    info@congrata.com
+                  <a href="mailto:luisa@congrata.com" className="hover:text-white transition-colors">
+                    luisa@congrata.com
                   </a>
                 </div>
               </div>

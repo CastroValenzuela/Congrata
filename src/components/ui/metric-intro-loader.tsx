@@ -249,7 +249,7 @@ export const MetricIntroLoader: React.FC<MetricIntroLoaderProps> = ({
 
           {/* Bottom discrete skip indicator */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 text-xs font-mono tracking-widest text-emerald-300/40 uppercase">
-            <span>Click o Espacio para saltar</span>
+            <span>Click or Space to skip</span>
           </div>
         </motion.div>
       )}

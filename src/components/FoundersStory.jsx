@@ -46,7 +46,7 @@ export default function FoundersStory() {
             </p>
 
             <p className="font-light leading-relaxed">
-              My journey began as a chemical engineering intern at <strong className="text-white font-semibold">Celanese de México</strong>, discovering the foundations of engineering and a career dedicated to innovation. Later, my work evaluating emerging technologies and patent applications at <strong className="text-white font-semibold">Mexico's National Council of Science and Technology (CONACYT)</strong> strengthened my conviction that scientific discovery has the power to impact society, becoming the inspiration to pursue graduate studies abroad.
+              My journey began as a chemical engineering intern at <strong className="text-white font-semibold">Celanese Mexico</strong>, discovering the foundations of engineering and a career dedicated to innovation. Later, my work evaluating emerging technologies and patent applications at <strong className="text-white font-semibold">Mexico's National Council of Science and Technology (CONACYT)</strong> strengthened my conviction that scientific discovery has the power to impact society, becoming the inspiration to pursue graduate studies abroad.
             </p>
 
             {/* ── Pixl Bio Style Scroll-Driven Illuminated Quote on Dark Obsidian ── */}
@@ -84,7 +84,7 @@ export default function FoundersStory() {
                   <Award className="w-5 h-5" />
                 </div>
                 <div className="text-xs">
-                  <div className="text-white font-bold font-heading">CONGRATA Global</div>
+                  <div className="text-white font-bold font-heading">CONGRATA</div>
                   <div className="text-emerald-400/60">UC System Partner Initiative</div>
                 </div>
               </div>

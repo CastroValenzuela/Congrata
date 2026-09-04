@@ -40,7 +40,7 @@ export default function App() {
     src: 'https://assets.mixkit.co/videos/preview/mixkit-waterfall-in-forest-2213-large.mp4',
     poster: 'https://images.unsplash.com/photo-1546587348-d12660c30c50?q=80&w=1200&auto=format&fit=crop',
     bgImage: '/images/ban-gioc-falls.jpg',
-    title: 'CONGRATA GLOBAL',
+    title: 'CONGRATA',
     subtitle: 'Consortium for Green Research and Technology Advancement',
     date: 'GREEN RESEARCH & MOBILITY',
     scrollToExpand: 'Scroll down to expand',

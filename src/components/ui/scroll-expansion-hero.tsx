@@ -27,7 +27,7 @@ export const ScrollExpandMedia = ({
   mediaSrc,
   posterSrc,
   bgImageSrc,
-  title = 'CONGRATA GLOBAL',
+  title = 'CONGRATA',
   subtitle = 'Consortium for Green Research and Technology Advancement',
   date = 'TRANSNATIONAL GREEN RESEARCH',
   scrollToExpand = 'Scroll down to expand',
@@ -182,8 +182,9 @@ export const ScrollExpandMedia = ({
   const mediaHeight = baseHeight + scrollProgress * (isMobileState ? 300 : 500);
   const textTranslateX = scrollProgress * (isMobileState ? 150 : 130);
 
-  const firstWord = title ? title.split(' ')[0] : 'CONGRATA';
-  const restOfTitle = title ? title.split(' ').slice(1).join(' ') : 'GLOBAL';
+  const hasMultipleWords = Boolean(title && title.trim().includes(' '));
+  const firstWord = hasMultipleWords ? title.trim().split(/\s+/)[0] : (title || 'CONGRATA');
+  const restOfTitle = hasMultipleWords ? title.trim().split(/\s+/).slice(1).join(' ') : '';
 
   return (
     <div
@@ -286,25 +287,44 @@ export const ScrollExpandMedia = ({
           </div>
         </motion.div>
 
-        {/* Splitting Title Overlay (Luminous Clean Typography) */}
-        <div
-          className={`flex items-center justify-center text-center gap-3 sm:gap-6 w-full relative z-20 flex-col sm:flex-row pointer-events-none select-none ${
-            textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
-          }`}
-        >
-          <motion.h2
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-white font-heading drop-shadow-[0_15px_45px_rgba(0,0,0,0.85)]"
-            style={{ transform: `translateX(-${textTranslateX}vw)` }}
+        {/* Splitting or Centered Title Overlay (Luminous Clean Typography) */}
+        {hasMultipleWords ? (
+          <div
+            className={`flex items-center justify-center text-center gap-3 sm:gap-6 w-full relative z-20 flex-col sm:flex-row pointer-events-none select-none ${
+              textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
+            }`}
           >
-            {firstWord}
-          </motion.h2>
-          <motion.h2
-            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-emerald-300 font-heading drop-shadow-[0_15px_45px_rgba(0,0,0,0.85)]"
-            style={{ transform: `translateX(${textTranslateX}vw)` }}
+            <motion.h2
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-white font-heading drop-shadow-[0_15px_45px_rgba(0,0,0,0.85)]"
+              style={{ transform: `translateX(-${textTranslateX}vw)` }}
+            >
+              {firstWord}
+            </motion.h2>
+            <motion.h2
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-emerald-300 font-heading drop-shadow-[0_15px_45px_rgba(0,0,0,0.85)]"
+              style={{ transform: `translateX(${textTranslateX}vw)` }}
+            >
+              {restOfTitle}
+            </motion.h2>
+          </div>
+        ) : (
+          <div
+            className={`flex items-center justify-center text-center w-full relative z-20 pointer-events-none select-none px-4 ${
+              textBlend ? 'mix-blend-difference' : 'mix-blend-normal'
+            }`}
           >
-            {restOfTitle}
-          </motion.h2>
-        </div>
+            <motion.h2
+              className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-white font-heading drop-shadow-[0_15px_45px_rgba(0,0,0,0.85)]"
+              style={{
+                opacity: Math.max(0, 1 - scrollProgress * 1.8),
+                transform: `scale(${1 - scrollProgress * 0.12}) translateY(-${scrollProgress * 28}px)`,
+                filter: `blur(${scrollProgress * 5}px)`,
+              }}
+            >
+              {firstWord}
+            </motion.h2>
+          </div>
+        )}
 
       </div>
 

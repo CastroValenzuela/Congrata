@@ -14,6 +14,11 @@
     --brand-amber-dark: #E2A32B;
     --bg-base: #F8FAF9;
     --bg-card: #FFFFFF;
+
+    /* Stacking Cards Variables */
+    --card-height: 520px;
+    --card-margin: 4vw;
+    --card-top-offset: 2.25rem;
   }
 
   body {
@@ -42,7 +47,7 @@
 ────────────────────────────────────────────────────────── */
 
 .glass-navbar {
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
   border: 1px solid rgba(255, 255, 255, 0.85);
@@ -53,7 +58,7 @@
 }
 
 .glass-panel {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.85);
@@ -68,7 +73,7 @@
 }
 
 .glass-panel-hover:hover {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   border-color: rgba(78, 168, 64, 0.45);
   transform: translateY(-5px) scale(1.008);
   box-shadow: 
@@ -78,7 +83,7 @@
 }
 
 .glass-pill {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
   border: 1px solid rgba(78, 168, 64, 0.30);
@@ -110,6 +115,68 @@
   background: linear-gradient(180deg, #1E293B 0%, #64748B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* ──────────────────────────────────────────────────────────
+   Stacking Cards Official Scroll-Driven Architecture
+────────────────────────────────────────────────────────── */
+
+#cards-stack {
+  padding-bottom: calc(var(--numcards, 3) * var(--card-top-offset));
+  margin-bottom: var(--card-margin);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(var(--numcards, 3), minmax(480px, auto));
+  gap: var(--card-margin);
+  list-style: none;
+  padding-left: 0;
+}
+
+.stack-card {
+  position: sticky;
+  top: 96px;
+  padding-top: calc(var(--index, 1) * var(--card-top-offset));
+  z-index: var(--index, 1);
+}
+
+.stack-card__content {
+  transform-origin: 50% 0%;
+  will-change: transform;
+  box-shadow: 
+    0 10px 30px -5px rgba(0, 0, 0, 0.08), 
+    0 25px 65px -10px rgba(21, 115, 107, 0.16),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  background: #FFFFFF;
+  border-radius: 1.75rem;
+  overflow: hidden;
+  border: 1px solid rgba(21, 115, 107, 0.14);
+  transition: transform 0.2s ease-out;
+}
+
+@supports (animation-timeline: view()) {
+  .stack-card {
+    --index0: calc(var(--index) - 1);
+    --reverse-index: calc(var(--numcards) - var(--index0));
+  }
+
+  @keyframes stack-scale {
+    to {
+      transform: scale(calc(1.05 - calc(0.05 * var(--reverse-index))));
+    }
+  }
+
+  #cards-stack {
+    view-timeline-name: --cards-element-scrolls-in-body;
+  }
+
+  .stack-card__content {
+    --start-range: calc(var(--index0) / var(--numcards) * 100%);
+    --end-range: calc(var(--index) / var(--numcards) * 100%);
+
+    animation: linear stack-scale forwards;
+    animation-timeline: --cards-element-scrolls-in-body;
+    animation-range: exit-crossing var(--start-range) exit-crossing var(--end-range);
+  }
 }
 
 /* Shimmer, Marquee & Border Beam Animations */

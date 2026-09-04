@@ -310,7 +310,7 @@ export const ScrollExpandMedia = ({
 
       {/* ── Content Revealed after Expansion ({children}) ── */}
       {showContent && (
-        <div className="relative z-20 flex flex-col w-full bg-[#F8FAF9] pb-16">
+        <div className="relative z-20 flex flex-col w-full bg-transparent">
           {children}
         </div>
       )}

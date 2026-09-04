@@ -9,7 +9,6 @@ import Impact from './components/Impact';
 import GraduateExperiences from './components/GraduateExperiences';
 import CredibilitySnapshot from './components/CredibilitySnapshot';
 import TeamSection from './components/TeamSection';
-import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import ScrollExpandMedia from './components/ui/scroll-expansion-hero';
 import MetricIntroLoader from './components/ui/metric-intro-loader';
@@ -106,12 +105,9 @@ export default function App() {
           <GraduateExperiences />
           <CredibilitySnapshot />
           <TeamSection />
-          <CTASection />
+          <Footer />
         </ScrollExpandMedia>
       </main>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

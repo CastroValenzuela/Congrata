@@ -18,7 +18,7 @@ export default function AcademicPartners() {
   ];
 
   return (
-    <section className="relative py-8 border-y border-emerald-900/10 bg-[#F8FAF9]/80 backdrop-blur-md overflow-hidden">
+    <section className="relative py-8 sm:py-10 mb-4 sm:mb-6 border-y border-emerald-900/10 bg-[#F8FAF9]/80 backdrop-blur-md overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
           

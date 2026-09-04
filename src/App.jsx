@@ -26,12 +26,16 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAF9] text-slate-800 selection:bg-emerald-500/20 selection:text-emerald-900">
+    <div className="min-h-screen bg-[#071F1B] text-slate-800 selection:bg-emerald-500/20 selection:text-emerald-900 overflow-x-hidden">
       {/* Navigation Header with Green Top Bar */}
       <Navbar />
 
-      {/* Main Content Area - Sits at z-10 on top of the footer to enable curtain reveal */}
-      <main className="relative z-10 bg-[#F8FAF9] w-full shadow-[0_30px_100px_rgba(0,0,0,0.25)]">
+      {/* 
+        MAIN CONTENT AREA
+        High z-index, solid background, rounded bottom corners, and shadow so that
+        the user scrolls down and reveals the footer curtain securely underneath.
+      */}
+      <main className="relative z-10 w-full min-h-[120vh] bg-[#F8FAF9] shadow-[0_35px_100px_rgba(0,0,0,0.35)] rounded-b-[2.5rem] border-b border-emerald-900/15">
         {/* Video Expand Hero with Action Bar */}
         <ScrollExpandMedia
           mediaType="video"
@@ -90,7 +94,7 @@ export default function App() {
         {/* Academic Partners Continuous Marquee Slider */}
         <AcademicPartners />
 
-        {/* Structured Landing Page Sections - Direct children of main so sticky works smoothly */}
+        {/* Structured Landing Page Sections */}
         <AboutSection />
         <ProgramsSection />
         <PillarsBento />

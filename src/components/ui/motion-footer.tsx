@@ -21,7 +21,7 @@ const STYLES = `
 .cinematic-footer-wrapper {
   font-family: 'Plus Jakarta Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
-  background: linear-gradient(180deg, #0A241F 0%, #061915 100%);
+  background: linear-gradient(180deg, #071F1B 0%, #030F0D 100%);
   color: #F8FAF9;
 }
 
@@ -45,20 +45,20 @@ const STYLES = `
 
 /* Organic Grid Background */
 .footer-bg-grid {
-  background-size: 48px 48px;
+  background-size: 50px 50px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
 }
 
 /* Emerald & Teal Aurora Glow */
 .footer-aurora {
   background: radial-gradient(
     circle at 50% 50%, 
-    rgba(78, 168, 64, 0.35) 0%, 
-    rgba(21, 115, 107, 0.25) 45%, 
+    rgba(78, 168, 64, 0.32) 0%, 
+    rgba(21, 115, 107, 0.24) 45%, 
     transparent 70%
   );
 }
@@ -94,14 +94,14 @@ const STYLES = `
   font-family: 'Outfit', sans-serif;
   color: transparent;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.12);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 65%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, transparent 65%);
   -webkit-background-clip: text;
   background-clip: text;
 }
 
 /* Metallic Text Glow */
 .footer-text-glow {
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.65) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -211,13 +211,14 @@ export function CinematicFooter() {
     if (typeof window === "undefined") return;
     if (!wrapperRef.current) return;
 
+    // React strict mode compatible GSAP context cleanup
     const ctx = gsap.context(() => {
       ScrollTrigger.refresh();
 
-      // Background Parallax for Giant Text
+      // Background Parallax with scrub
       gsap.fromTo(
         giantTextRef.current,
-        { y: "14vh", scale: 0.85, opacity: 0.2 },
+        { y: "12vh", scale: 0.8, opacity: 0 },
         {
           y: "0vh",
           scale: 1,
@@ -232,10 +233,10 @@ export function CinematicFooter() {
         }
       );
 
-      // Staggered Content Reveal
+      // Staggered Content Reveal on scroll entry
       gsap.fromTo(
         [headingRef.current, linksRef.current],
-        { y: 40, opacity: 0 },
+        { y: 60, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -243,8 +244,8 @@ export function CinematicFooter() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: wrapperRef.current,
-            start: "top 75%",
-            end: "bottom 85%",
+            start: "top 60%",
+            end: "bottom bottom",
             scrub: 1,
           },
         }
@@ -262,124 +263,139 @@ export function CinematicFooter() {
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       
-      <footer
+      {/* 
+        The "Curtain Reveal" Wrapper:
+        It sits in standard flow. Because it has clip-path and hardware-accelerated translateZ,
+        its contents are revealed like a rising theater curtain as you scroll down.
+      */}
+      <div
         ref={wrapperRef}
-        className="relative min-h-[95vh] w-full flex flex-col justify-between overflow-hidden cinematic-footer-wrapper pt-16 pb-8 z-20 border-t border-emerald-900/40"
+        className="relative h-screen w-full"
+        style={{
+          clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)",
+          WebkitClipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)",
+          transform: "translateZ(0)",
+          WebkitTransform: "translateZ(0)",
+        }}
       >
-        {/* Ambient Light & Grid Background */}
-        <div className="footer-aurora absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[90px] pointer-events-none z-0" />
-        <div className="footer-bg-grid absolute inset-0 z-0 pointer-events-none" />
-
-        {/* Giant background text with Parallax */}
-        <div
-          ref={giantTextRef}
-          className="footer-giant-bg-text absolute -bottom-[3vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"
-        >
-          CONGRATA
-        </div>
-
-        {/* 1. Diagonal Sleek Marquee (Top of footer) */}
-        <div className="relative w-full overflow-hidden border-y border-white/10 bg-black/40 backdrop-blur-md py-3.5 z-10 -rotate-1 scale-105 shadow-2xl mb-12">
-          <div className="flex w-max animate-footer-scroll-marquee text-xs sm:text-sm font-bold tracking-[0.25em] text-emerald-100/80 uppercase">
-            <MarqueeItem />
-            <MarqueeItem />
-          </div>
-        </div>
-
-        {/* 2. Main Center Content */}
-        <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 my-auto w-full max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono font-bold tracking-wider text-[#4EA840] mb-4 uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-[#F5B942]" />
-            <span>Consortium for Green Research and Technology Advancement</span>
-          </div>
-
-          <h2
-            ref={headingRef}
-            className="text-4xl sm:text-6xl md:text-7xl font-extrabold footer-text-glow tracking-tight mb-8 text-center max-w-3xl leading-tight"
-          >
-            Ready to Shape the Future of Green Science?
-          </h2>
-
-          {/* Interactive Magnetic Pills Layout */}
-          <div ref={linksRef} className="flex flex-col items-center gap-6 w-full">
-            {/* Primary Call To Action */}
-            <div className="flex flex-wrap justify-center gap-4 w-full">
-              <MagneticButton 
-                as="a" 
-                href="#engage" 
-                className="px-8 py-4 rounded-full bg-[#F5B942] hover:bg-[#E5A830] text-slate-950 font-bold text-sm md:text-base flex items-center gap-3 shadow-lg shadow-amber-500/25 border border-white/40 group transition-all"
-              >
-                <span>Become a Scholar</span>
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </MagneticButton>
-              
-              <MagneticButton 
-                as="a" 
-                href="mailto:info@congrata.com" 
-                className="footer-glass-pill px-8 py-4 rounded-full text-white font-bold text-sm md:text-base flex items-center gap-3 group"
-              >
-                <Mail className="w-4 h-4 text-emerald-300 group-hover:text-white transition-colors" />
-                <span>Partner With Us</span>
-              </MagneticButton>
-            </div>
-
-            {/* Secondary Navigation Links */}
-            <div className="flex flex-wrap justify-center gap-2.5 sm:gap-4 w-full mt-2">
-              <MagneticButton as="a" href="#about" className="footer-glass-pill px-5 py-2.5 rounded-full text-slate-300 font-medium text-xs sm:text-sm hover:text-white">
-                About Us
-              </MagneticButton>
-              <MagneticButton as="a" href="#programs" className="footer-glass-pill px-5 py-2.5 rounded-full text-slate-300 font-medium text-xs sm:text-sm hover:text-white">
-                Programs
-              </MagneticButton>
-              <MagneticButton as="a" href="#founder" className="footer-glass-pill px-5 py-2.5 rounded-full text-slate-300 font-medium text-xs sm:text-sm hover:text-white">
-                Founder's Story
-              </MagneticButton>
-              <MagneticButton as="a" href="#impact" className="footer-glass-pill px-5 py-2.5 rounded-full text-slate-300 font-medium text-xs sm:text-sm hover:text-white">
-                Impact
-              </MagneticButton>
-              <MagneticButton as="a" href="#team" className="footer-glass-pill px-5 py-2.5 rounded-full text-slate-300 font-medium text-xs sm:text-sm hover:text-white">
-                Mentors & Leadership
-              </MagneticButton>
-            </div>
-          </div>
-        </div>
-
-        {/* 3. Bottom Bar / Credits */}
-        <div className="relative z-20 w-full pt-12 pb-2 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/10 mt-12">
+        {/* The actual footer stays fixed to the viewport underneath everything */}
+        <footer className="fixed bottom-0 left-0 flex h-screen w-full flex-col justify-between overflow-hidden cinematic-footer-wrapper">
           
-          {/* Contact & Location Info */}
-          <div className="flex flex-wrap items-center gap-4 text-slate-400 text-xs font-medium order-2 md:order-1">
-            <span className="flex items-center gap-1.5 text-slate-300">
-              <MapPin className="w-3.5 h-3.5 text-[#4EA840]" />
-              Corona Del Mar, CA • P.O. Box 1197
-            </span>
-            <span>•</span>
-            <a href="tel:9492449268" className="hover:text-white transition-colors">
-              (949) 244-9268
-            </a>
-            <span>•</span>
-            <a href="mailto:info@congrata.com" className="hover:text-white transition-colors">
-              info@congrata.com
-            </a>
-          </div>
+          {/* Ambient Light & Grid Background */}
+          <div className="footer-aurora absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[90px] pointer-events-none z-0" />
+          <div className="footer-bg-grid absolute inset-0 z-0 pointer-events-none" />
 
-          {/* Copyright & Mission Badge */}
-          <div className="text-slate-400 text-[11px] font-semibold tracking-wider uppercase order-1 md:order-2 text-center">
-            © CONGRATA. All rights reserved.
-          </div>
-
-          {/* Back to top Button */}
-          <MagneticButton
-            as="button"
-            onClick={scrollToTop}
-            className="w-11 h-11 rounded-full footer-glass-pill flex items-center justify-center text-slate-300 hover:text-white group order-3"
-            aria-label="Back to top"
+          {/* Giant background text with Parallax */}
+          <div
+            ref={giantTextRef}
+            className="footer-giant-bg-text absolute -bottom-[4vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"
           >
-            <ArrowUp className="w-4 h-4 transform group-hover:-translate-y-1 transition-transform duration-300" />
-          </MagneticButton>
+            CONGRATA
+          </div>
 
-        </div>
-      </footer>
+          {/* 1. Diagonal Sleek Marquee (Top of footer) */}
+          <div className="absolute top-10 left-0 w-full overflow-hidden border-y border-white/10 bg-black/40 backdrop-blur-md py-3.5 z-10 -rotate-1 scale-105 shadow-2xl">
+            <div className="flex w-max animate-footer-scroll-marquee text-xs sm:text-sm font-bold tracking-[0.25em] text-emerald-100/80 uppercase">
+              <MarqueeItem />
+              <MarqueeItem />
+            </div>
+          </div>
+
+          {/* 2. Main Center Content */}
+          <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 mt-20 w-full max-w-5xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono font-bold tracking-wider text-[#4EA840] mb-4 uppercase">
+              <Sparkles className="w-3.5 h-3.5 text-[#F5B942]" />
+              <span>Consortium for Green Research and Technology Advancement</span>
+            </div>
+
+            <h2
+              ref={headingRef}
+              className="text-4xl sm:text-6xl md:text-7xl font-extrabold footer-text-glow tracking-tight mb-8 text-center max-w-3xl leading-tight"
+            >
+              Ready to Shape the Future of Green Science?
+            </h2>
+
+            {/* Interactive Magnetic Pills Layout */}
+            <div ref={linksRef} className="flex flex-col items-center gap-6 w-full">
+              {/* Primary Call To Action */}
+              <div className="flex flex-wrap justify-center gap-4 w-full">
+                <MagneticButton 
+                  as="a" 
+                  href="#engage" 
+                  className="px-8 py-4 rounded-full bg-[#F5B942] hover:bg-[#E5A830] text-slate-950 font-bold text-sm md:text-base flex items-center gap-3 shadow-lg shadow-amber-500/25 border border-white/40 group transition-all"
+                >
+                  <span>Become a Scholar</span>
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </MagneticButton>
+                
+                <MagneticButton 
+                  as="a" 
+                  href="mailto:info@congrata.com" 
+                  className="footer-glass-pill px-8 py-4 rounded-full text-white font-bold text-sm md:text-base flex items-center gap-3 group"
+                >
+                  <Mail className="w-4 h-4 text-emerald-300 group-hover:text-white transition-colors" />
+                  <span>Partner With Us</span>
+                </MagneticButton>
+              </div>
+
+              {/* Secondary Navigation Links */}
+              <div className="flex flex-wrap justify-center gap-2.5 sm:gap-4 w-full mt-2">
+                <MagneticButton as="a" href="#about" className="footer-glass-pill px-5 py-2.5 rounded-full text-slate-300 font-medium text-xs sm:text-sm hover:text-white">
+                  About Us
+                </MagneticButton>
+                <MagneticButton as="a" href="#programs" className="footer-glass-pill px-5 py-2.5 rounded-full text-slate-300 font-medium text-xs sm:text-sm hover:text-white">
+                  Programs
+                </MagneticButton>
+                <MagneticButton as="a" href="#founder" className="footer-glass-pill px-5 py-2.5 rounded-full text-slate-300 font-medium text-xs sm:text-sm hover:text-white">
+                  Founder's Story
+                </MagneticButton>
+                <MagneticButton as="a" href="#impact" className="footer-glass-pill px-5 py-2.5 rounded-full text-slate-300 font-medium text-xs sm:text-sm hover:text-white">
+                  Impact
+                </MagneticButton>
+                <MagneticButton as="a" href="#team" className="footer-glass-pill px-5 py-2.5 rounded-full text-slate-300 font-medium text-xs sm:text-sm hover:text-white">
+                  Mentors & Leadership
+                </MagneticButton>
+              </div>
+            </div>
+          </div>
+
+          {/* 3. Bottom Bar / Credits */}
+          <div className="relative z-20 w-full pb-8 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/10 pt-6">
+            
+            {/* Contact & Location Info */}
+            <div className="flex flex-wrap items-center gap-4 text-slate-400 text-xs font-medium order-2 md:order-1">
+              <span className="flex items-center gap-1.5 text-slate-300">
+                <MapPin className="w-3.5 h-3.5 text-[#4EA840]" />
+                Corona Del Mar, CA • P.O. Box 1197
+              </span>
+              <span>•</span>
+              <a href="tel:9492449268" className="hover:text-white transition-colors">
+                (949) 244-9268
+              </a>
+              <span>•</span>
+              <a href="mailto:info@congrata.com" className="hover:text-white transition-colors">
+                info@congrata.com
+              </a>
+            </div>
+
+            {/* Copyright & Mission Badge */}
+            <div className="text-slate-400 text-[11px] font-semibold tracking-wider uppercase order-1 md:order-2 text-center">
+              © CONGRATA. All rights reserved.
+            </div>
+
+            {/* Back to top Button */}
+            <MagneticButton
+              as="button"
+              onClick={scrollToTop}
+              className="w-11 h-11 rounded-full footer-glass-pill flex items-center justify-center text-slate-300 hover:text-white group order-3"
+              aria-label="Back to top"
+            >
+              <ArrowUp className="w-4 h-4 transform group-hover:-translate-y-1 transition-transform duration-300" />
+            </MagneticButton>
+
+          </div>
+        </footer>
+      </div>
     </>
   );
 }

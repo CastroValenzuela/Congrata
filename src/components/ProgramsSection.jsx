@@ -49,7 +49,10 @@ export default function ProgramsSection() {
   ];
 
   return (
-    <section id="programs" className="py-24 relative overflow-hidden bg-[#F8FAF9]">
+    <section 
+      id="programs" 
+      className="py-28 relative overflow-hidden bg-[#F8FAF9] rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-12 sm:-mt-16 relative z-20 border-t border-slate-200/80 shadow-[0_-30px_70px_rgba(0,0,0,0.14)]"
+    >
       
       {/* Background Topographic Accent Line */}
       <div className="absolute top-1/2 -left-20 w-96 h-96 bg-emerald-100/30 rounded-full blur-3xl pointer-events-none -z-10" />

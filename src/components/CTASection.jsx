@@ -15,7 +15,10 @@ export default function CTASection() {
   };
 
   return (
-    <section id="engage" className="py-24 relative overflow-hidden bg-[#F8FAF9]">
+    <section 
+      id="engage" 
+      className="py-28 relative overflow-hidden bg-[#071917] rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-12 sm:-mt-16 z-50 border-t border-emerald-500/25 shadow-[0_-30px_70px_rgba(0,0,0,0.35)]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}

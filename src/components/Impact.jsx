@@ -34,7 +34,10 @@ export default function Impact() {
   ];
 
   return (
-    <section id="impact" className="py-24 relative overflow-hidden bg-[#F8FAF9]">
+    <section 
+      id="impact" 
+      className="py-28 relative overflow-hidden bg-[#F8FAF9] rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-12 sm:-mt-16 z-40 border-t border-slate-200/80 shadow-[0_-30px_70px_rgba(0,0,0,0.12)]"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="flex flex-col items-center text-center mb-16">

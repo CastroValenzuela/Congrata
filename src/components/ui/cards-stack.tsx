@@ -120,19 +120,22 @@ export const PILLARS_DATA = [
 
 export default function CardsStack() {
   return (
-    <section id="pillars" className="py-24 bg-[#F8FAF9] relative">
+    <section 
+      id="pillars" 
+      className="py-28 bg-[#071917] text-white relative rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-12 sm:-mt-16 z-30 border-t border-emerald-500/25 shadow-[0_-30px_70px_rgba(0,0,0,0.35)]"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 text-xs font-bold uppercase tracking-wider text-[#15736B] mb-4 border border-emerald-300/50 shadow-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/80 text-xs font-bold uppercase tracking-wider text-emerald-300 mb-4 border border-emerald-500/30 shadow-sm backdrop-blur-md">
             <Sparkles className="w-3.5 h-3.5 text-[#4EA840]" />
             <span>Strategic Framework</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4 font-heading">
-            Our Three <span className="text-gradient-green">Pillars</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 font-heading">
+            Our Three <span className="text-[#4EA840]">Pillars</span>
           </h2>
-          <p className="text-slate-600 max-w-2xl text-base sm:text-lg leading-relaxed font-light">
+          <p className="text-emerald-100/70 max-w-2xl text-base sm:text-lg leading-relaxed font-light">
             A comprehensive, three-dimensional model engineered to accelerate scholars from foundational discovery to global impact.
           </p>
         </div>

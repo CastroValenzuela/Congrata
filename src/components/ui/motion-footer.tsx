@@ -95,21 +95,38 @@ const STYLES = `
   color: #FFFFFF;
 }
 
-/* Giant Background Text Masking (100% Horizontal Fit) */
-.footer-giant-bg-text {
-  font-size: clamp(2.5rem, 11.2vw, 8.5rem);
-  line-height: 0.9;
+/* Giant Bottom Half-Cut Horizon Brand Name (Full Edge-to-Edge, 50% Vertical Crop) */
+.footer-half-cut-container {
+  width: 100%;
+  height: clamp(3rem, 9.5vw, 10.5vw);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  pointer-events: none;
+  user-select: none;
+  margin-top: 0.5rem;
+}
+
+.footer-giant-half-text {
+  font-size: clamp(4.5rem, 19vw, 19vw);
+  line-height: 0.82;
   font-weight: 900;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   font-family: 'Outfit', sans-serif;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, transparent 80%);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.16);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(78, 168, 64, 0.22) 50%, transparent 90%);
   -webkit-background-clip: text;
   background-clip: text;
-  width: 100%;
-  text-align: center;
   white-space: nowrap;
+  width: 100vw;
+  text-align: center;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  transform: translateY(-4%);
 }
 
 /* Metallic Text Glow */
@@ -442,15 +459,8 @@ export function CinematicFooter() {
 
           </div>
 
-          {/* Giant Background Parallax Brand Name (100% Horizontal Visibility) */}
-          <div className="relative w-full overflow-hidden flex justify-center py-2 select-none pointer-events-none">
-            <div className="footer-giant-bg-text font-black tracking-tight">
-              CONGRATA
-            </div>
-          </div>
-
           {/* ── PART 4: BOTTOM LEGAL & BACK TO TOP ── */}
-          <div className="pt-3 pb-3 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 font-mono">
+          <div className="pt-3 pb-3 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 font-mono border-t border-white/5 mt-2">
             <div>
               © CONGRATA. All rights reserved. • UC System Academic Alliance
             </div>
@@ -468,6 +478,13 @@ export function CinematicFooter() {
             </div>
           </div>
 
+        </div>
+
+        {/* ── PART 5: MONUMENTAL FULL-BLEED HORIZON WORDMARK (Edge-to-Edge, 50% Vertical Crop) ── */}
+        <div className="footer-half-cut-container">
+          <div className="footer-giant-half-text">
+            CONGRATA
+          </div>
         </div>
 
       </section>

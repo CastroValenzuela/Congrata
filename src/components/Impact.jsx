@@ -36,7 +36,7 @@ export default function Impact() {
   return (
     <section 
       id="impact" 
-      className="py-28 relative overflow-hidden bg-[#F8FAF9] rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-12 sm:-mt-16 z-40 border-t border-slate-200/80 shadow-[0_-30px_70px_rgba(0,0,0,0.12)]"
+      className="py-28 relative overflow-hidden bg-[#F8FAF9] rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-12 sm:-mt-16 z-40 border-t border-slate-200/80 shadow-[0_-30px_70px_rgba(0,0,0,0.12)] before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-emerald-500/30 before:to-transparent"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}

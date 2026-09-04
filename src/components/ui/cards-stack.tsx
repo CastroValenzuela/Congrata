@@ -122,7 +122,7 @@ export default function CardsStack() {
   return (
     <section 
       id="pillars" 
-      className="py-28 bg-[#071917] text-white relative rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-12 sm:-mt-16 z-30 border-t border-emerald-500/25 shadow-[0_-30px_70px_rgba(0,0,0,0.35)]"
+      className="py-28 bg-[#071917] text-white relative rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-12 sm:-mt-16 z-30 border-t border-emerald-500/25 shadow-[0_-30px_70px_rgba(0,0,0,0.35)] before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-emerald-400/40 before:to-transparent"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         

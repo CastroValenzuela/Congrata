@@ -5,7 +5,7 @@ import TeamShowcase from '@/components/ui/team-showcase';
 
 export default function TeamSection() {
   return (
-    <section id="team" className="py-24 relative overflow-hidden bg-[#F8FAF9]">
+    <section id="team" className="pt-24 pb-36 sm:pb-44 relative overflow-hidden bg-[#F8FAF9]">
       {/* Background ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-emerald-200/40 rounded-full blur-3xl pointer-events-none -z-10" />
 

@@ -95,18 +95,21 @@ const STYLES = `
   color: #FFFFFF;
 }
 
-/* Giant Background Text Masking */
+/* Giant Background Text Masking (100% Horizontal Fit) */
 .footer-giant-bg-text {
-  font-size: 20vw;
-  line-height: 0.75;
+  font-size: clamp(2.5rem, 11.2vw, 8.5rem);
+  line-height: 0.9;
   font-weight: 900;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   font-family: 'Outfit', sans-serif;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.09);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, transparent 80%);
   -webkit-background-clip: text;
   background-clip: text;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
 }
 
 /* Metallic Text Glow */
@@ -234,23 +237,23 @@ export function CinematicFooter() {
         className="relative w-full overflow-hidden cinematic-footer-wrapper rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-12 sm:-mt-16 z-50 border-t border-emerald-500/30 shadow-[0_-35px_80px_rgba(0,0,0,0.45)] before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-emerald-400/40 before:to-transparent"
       >
         {/* Ambient Aurora Light & Grid */}
-        <div className="footer-aurora absolute left-1/2 top-1/4 h-[50vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[100px] pointer-events-none z-0" />
+        <div className="footer-aurora absolute left-1/2 top-1/4 h-[35vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[80px] pointer-events-none z-0" />
         <div className="footer-bg-grid absolute inset-0 z-0 pointer-events-none" />
 
-        {/* ── PART 1: THE HEROIC CALL TO ACTION ── */}
-        <div className="relative z-10 pt-20 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
+        {/* ── PART 1: THE HEROIC CALL TO ACTION (Compact & Punchy) ── */}
+        <div className="relative z-10 pt-10 sm:pt-14 pb-8 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
           
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/80 text-xs font-mono font-bold uppercase tracking-wider text-emerald-300 mb-6 border border-emerald-500/30 shadow-lg backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/80 text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-300 mb-3 border border-emerald-500/30 shadow-md backdrop-blur-md">
             <Globe className="w-3.5 h-3.5 text-[#4EA840]" />
             <span>Engage with Us • Transnational Stewardship</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight font-heading footer-text-glow max-w-4xl mx-auto">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-3 leading-tight font-heading footer-text-glow max-w-3xl mx-auto">
             Shape the Future of <br className="hidden sm:inline" />
             <span className="text-[#4EA840]">Green Scientific Discovery</span>
           </h2>
 
-          <p className="text-base sm:text-lg lg:text-xl text-emerald-100/80 font-light leading-relaxed mb-10 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-emerald-100/80 font-light leading-relaxed mb-6 max-w-xl mx-auto">
             Your support empowers tomorrow's scientists and leaders to create solutions that improve lives across communities, ecosystems, and generations.
           </p>
 
@@ -258,17 +261,17 @@ export function CinematicFooter() {
           <div 
             data-cursor="COPY"
             onClick={handleCopyEmail}
-            className="mb-10 w-full max-w-xl mx-auto bg-[#0C2421]/90 backdrop-blur-xl rounded-2xl p-3.5 sm:p-4 border border-emerald-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-2xl cursor-pointer hover:border-emerald-400 transition-colors"
+            className="mb-6 w-full max-w-lg mx-auto bg-[#0C2421]/90 backdrop-blur-xl rounded-2xl p-2.5 sm:p-3 border border-emerald-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xl cursor-pointer hover:border-emerald-400 transition-colors"
           >
             <div className="flex items-center gap-3 text-left px-2">
-              <div className="w-10 h-10 rounded-xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center text-[#4EA840] shrink-0">
-                <Mail className="w-5 h-5" />
+              <div className="w-9 h-9 rounded-xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center text-[#4EA840] shrink-0">
+                <Mail className="w-4 h-4" />
               </div>
               <div>
                 <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400">
                   Direct Inquiries & CV Submissions
                 </div>
-                <div className="text-sm sm:text-base font-bold text-white hover:text-emerald-300 transition-colors">
+                <div className="text-xs sm:text-sm font-bold text-white hover:text-emerald-300 transition-colors">
                   {email}
                 </div>
               </div>
@@ -280,7 +283,7 @@ export function CinematicFooter() {
                 e.stopPropagation();
                 handleCopyEmail();
               }}
-              className="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-mono font-bold text-white bg-emerald-900/60 hover:bg-emerald-800/80 transition-all flex items-center justify-center gap-2 border border-emerald-500/30 cursor-pointer"
+              className="w-full sm:w-auto px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold text-white bg-emerald-900/60 hover:bg-emerald-800/80 transition-all flex items-center justify-center gap-1.5 border border-emerald-500/30 cursor-pointer"
             >
               {copied ? (
                 <>
@@ -297,7 +300,7 @@ export function CinematicFooter() {
           </div>
 
           {/* Action Button Capsules with Intake Protocol Modal Triggers */}
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <MagneticButton
               as="button"
               onClick={() => {
@@ -305,10 +308,10 @@ export function CinematicFooter() {
                   window.dispatchEvent(new CustomEvent('open-scholar-modal', { detail: { type: 'scholar' } }));
                 }
               }}
-              className="px-8 py-4 rounded-full bg-[#F5B942] hover:bg-[#E5A830] text-slate-950 font-bold text-sm sm:text-base shadow-xl shadow-amber-500/25 flex items-center gap-2 border border-amber-300/40 transition-all cursor-pointer"
+              className="px-6 py-2.5 rounded-full bg-[#F5B942] hover:bg-[#E5A830] text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/25 flex items-center gap-2 border border-amber-300/40 transition-all cursor-pointer"
             >
               <span>Become a Scholar</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-3.5 h-3.5" />
             </MagneticButton>
 
             <MagneticButton
@@ -318,9 +321,9 @@ export function CinematicFooter() {
                   window.dispatchEvent(new CustomEvent('open-scholar-modal', { detail: { type: 'institution' } }));
                 }
               }}
-              className="footer-glass-pill px-8 py-4 rounded-full text-white font-bold text-sm sm:text-base flex items-center gap-2 group cursor-pointer"
+              className="footer-glass-pill px-6 py-2.5 rounded-full text-white font-bold text-xs sm:text-sm flex items-center gap-2 group cursor-pointer"
             >
-              <Mail className="w-4 h-4 text-emerald-300 group-hover:text-white transition-colors" />
+              <Mail className="w-3.5 h-3.5 text-emerald-300 group-hover:text-white transition-colors" />
               <span>Partner with Us</span>
             </MagneticButton>
 
@@ -331,53 +334,53 @@ export function CinematicFooter() {
                   window.dispatchEvent(new CustomEvent('open-scholar-modal', { detail: { type: 'endowment' } }));
                 }
               }}
-              className="footer-glass-pill px-6 py-4 rounded-full text-emerald-200 font-semibold text-sm flex items-center gap-2 hover:text-white cursor-pointer"
+              className="footer-glass-pill px-5 py-2.5 rounded-full text-emerald-200 font-semibold text-xs sm:text-sm flex items-center gap-2 hover:text-white cursor-pointer"
             >
               <span>Support Mission</span>
-              <Sparkles className="w-4 h-4 text-[#F5B942]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#F5B942]" />
             </MagneticButton>
           </div>
 
         </div>
 
-        {/* ── PART 2: ANIMATED MARQUEE TICKER ── */}
-        <div className="relative w-full overflow-hidden border-y border-white/10 bg-black/40 backdrop-blur-md py-4 my-8 shadow-2xl">
-          <div className="flex w-max animate-footer-scroll-marquee text-xs sm:text-sm font-bold tracking-[0.25em] text-emerald-100/80 uppercase font-mono">
+        {/* ── PART 2: ANIMATED MARQUEE TICKER (Tighter Vertical Footprint) ── */}
+        <div className="relative w-full overflow-hidden border-y border-white/10 bg-black/40 backdrop-blur-md py-2.5 my-3 shadow-xl">
+          <div className="flex w-max animate-footer-scroll-marquee text-xs font-bold tracking-[0.2em] text-emerald-100/80 uppercase font-mono">
             <MarqueeItem />
             <MarqueeItem />
           </div>
         </div>
 
-        {/* ── PART 3: 4-COLUMN INSTITUTIONAL FOOTER ── */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-14 border-b border-white/10">
+        {/* ── PART 3: 4-COLUMN INSTITUTIONAL FOOTER (Compact & Airy) ── */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8 pb-6 border-b border-white/10">
             
             {/* Col 1: Brand & Mandate (Span 4) */}
-            <div className="lg:col-span-4 space-y-4">
+            <div className="lg:col-span-4 space-y-2">
               <div className="flex items-center gap-3">
                 <img
                   src="/images/logo.png"
                   alt="CONGRATA Official Logo"
-                  className="h-9 w-auto object-contain brightness-110 drop-shadow-md"
+                  className="h-8 w-auto object-contain brightness-110 drop-shadow-md"
                 />
               </div>
 
-              <p className="text-slate-300 text-sm leading-relaxed font-light max-w-sm">
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-light max-w-sm">
                 Consortium for Green Research and Technology Advancement. Cultivating early-career scientific leaders to cross boundaries and create lasting impact.
               </p>
 
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-[11px] font-mono text-emerald-300">
+              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/30 text-[10px] font-mono text-emerald-300">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#4EA840] animate-pulse" />
                 <span>ACTIVE TRANSNATIONAL CORRIDOR</span>
               </div>
             </div>
 
             {/* Col 2: Navigation Links (Span 2) */}
-            <div className="lg:col-span-2 space-y-3">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
+            <div className="lg:col-span-2 space-y-2">
+              <h4 className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-400">
                 [01] Navigation
               </h4>
-              <ul className="space-y-2 text-sm text-slate-300 font-light">
+              <ul className="space-y-1.5 text-xs sm:text-sm text-slate-300 font-light">
                 <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
                 <li><a href="#programs" className="hover:text-white transition-colors">Programs</a></li>
                 <li><a href="#pillars" className="hover:text-white transition-colors">Strategic Pillars</a></li>
@@ -388,11 +391,11 @@ export function CinematicFooter() {
             </div>
 
             {/* Col 3: Research Focus (Span 3) */}
-            <div className="lg:col-span-3 space-y-3">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
+            <div className="lg:col-span-3 space-y-2">
+              <h4 className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-400">
                 [02] Research Focus
               </h4>
-              <ul className="space-y-2 text-sm text-slate-300 font-light">
+              <ul className="space-y-1.5 text-xs sm:text-sm text-slate-300 font-light">
                 <li className="flex items-center gap-1.5">
                   <span className="text-[#4EA840] text-xs">›</span>
                   <span>Healthcare & Phenomics</span>
@@ -413,23 +416,23 @@ export function CinematicFooter() {
             </div>
 
             {/* Col 4: Contact & Office (Span 3) */}
-            <div className="lg:col-span-3 space-y-3">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
+            <div className="lg:col-span-3 space-y-2">
+              <h4 className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-400">
                 [03] Headquarters
               </h4>
-              <div className="space-y-2.5 text-sm text-slate-300 font-light">
+              <div className="space-y-1.5 text-xs sm:text-sm text-slate-300 font-light">
                 <div className="flex items-start gap-2">
-                  <MapPin className="w-4 h-4 text-[#4EA840] shrink-0 mt-0.5" />
+                  <MapPin className="w-3.5 h-3.5 text-[#4EA840] shrink-0 mt-0.5" />
                   <span>Corona Del Mar, CA • P.O. Box 1197</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-[#4EA840] shrink-0" />
+                  <Phone className="w-3.5 h-3.5 text-[#4EA840] shrink-0" />
                   <a href="tel:9492449268" className="hover:text-white transition-colors">
                     (949) 244-9268
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-[#4EA840] shrink-0" />
+                  <Mail className="w-3.5 h-3.5 text-[#4EA840] shrink-0" />
                   <a href="mailto:info@congrata.com" className="hover:text-white transition-colors">
                     info@congrata.com
                   </a>
@@ -439,28 +442,28 @@ export function CinematicFooter() {
 
           </div>
 
-          {/* Giant Background Parallax Brand Name */}
-          <div className="relative w-full overflow-hidden flex justify-center py-6 select-none pointer-events-none">
-            <div className="footer-giant-bg-text font-black tracking-tighter">
-              CONGRATA.
+          {/* Giant Background Parallax Brand Name (100% Horizontal Visibility) */}
+          <div className="relative w-full overflow-hidden flex justify-center py-2 select-none pointer-events-none">
+            <div className="footer-giant-bg-text font-black tracking-tight">
+              CONGRATA
             </div>
           </div>
 
           {/* ── PART 4: BOTTOM LEGAL & BACK TO TOP ── */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-mono">
+          <div className="pt-3 pb-3 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 font-mono">
             <div>
               © CONGRATA. All rights reserved. • UC System Academic Alliance
             </div>
 
             <div className="flex items-center gap-4">
-              <span className="text-slate-500">Global Science & Technology Advancement</span>
+              <span className="text-slate-500 hidden sm:inline">Global Science & Technology Advancement</span>
               <MagneticButton
                 as="button"
                 onClick={scrollToTop}
-                className="w-10 h-10 rounded-full footer-glass-pill flex items-center justify-center text-slate-300 hover:text-white group"
+                className="w-9 h-9 rounded-full footer-glass-pill flex items-center justify-center text-slate-300 hover:text-white group"
                 aria-label="Back to top"
               >
-                <ArrowUp className="w-4 h-4 transform group-hover:-translate-y-0.5 transition-transform duration-300" />
+                <ArrowUp className="w-3.5 h-3.5 transform group-hover:-translate-y-0.5 transition-transform duration-300" />
               </MagneticButton>
             </div>
           </div>

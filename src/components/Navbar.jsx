@@ -62,35 +62,40 @@ export default function Navbar() {
 
             {/* Action CTA & Mobile Toggle with Pro Shimmer */}
             <div className="flex items-center gap-3">
-              <a
-                href="#engage"
-                className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold tracking-wide text-slate-950 bg-[#F5B942] hover:bg-[#E5A830] shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 border border-white/40 transition-all duration-200 active:scale-95 group"
+              <button
+                type="button"
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.dispatchEvent(new CustomEvent('open-scholar-modal', { detail: { type: 'scholar' } }));
+                  }
+                }}
+                className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-bold tracking-wide text-slate-950 bg-[#F5B942] hover:bg-[#E5A830] shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 border border-white/40 transition-all duration-200 active:scale-95 group cursor-pointer"
               >
                 <span>Become a Scholar</span>
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
+              </button>
 
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2.5 rounded-2xl lg:hidden text-slate-700 hover:text-[#15736B] bg-white/60 backdrop-blur-md hover:bg-white border border-white/60 transition-colors cursor-pointer shadow-sm"
-                aria-label="Toggle Menu"
+                aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
 
-          {/* Mobile Glass Navigation Drawer */}
+          {/* Mobile Dropdown Menu with Specular Polish */}
           <AnimatePresence>
             {mobileMenuOpen && (
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                className="lg:hidden overflow-hidden border-t border-emerald-900/10 mt-3 pt-3 pb-2"
+                transition={{ duration: 0.3 }}
+                className="lg:hidden overflow-hidden border-t border-white/50 mt-3 pt-3"
               >
-                <div className="flex flex-col gap-1.5">
+                <div className="flex flex-col gap-1 pb-2">
                   {navLinks.map((link) => (
                     <a
                       key={link.name}
@@ -102,14 +107,19 @@ export default function Navbar() {
                     </a>
                   ))}
                   <div className="pt-2 flex flex-col gap-2 border-t border-slate-100">
-                    <a
-                      href="#engage"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-950 bg-[#F5B942] shadow-md"
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (typeof window !== 'undefined') {
+                          window.dispatchEvent(new CustomEvent('open-scholar-modal', { detail: { type: 'scholar' } }));
+                        }
+                      }}
+                      className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-950 bg-[#F5B942] shadow-md cursor-pointer"
                     >
                       <span>Become a Scholar</span>
                       <ArrowUpRight className="w-4 h-4" />
-                    </a>
+                    </button>
                   </div>
                 </div>
               </motion.div>

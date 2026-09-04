@@ -255,7 +255,11 @@ export function CinematicFooter() {
           </p>
 
           {/* High-Conversion Fast Email Copy Capsule */}
-          <div className="mb-10 w-full max-w-xl mx-auto bg-[#0C2421]/90 backdrop-blur-xl rounded-2xl p-3.5 sm:p-4 border border-emerald-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-2xl">
+          <div 
+            data-cursor="COPY"
+            onClick={handleCopyEmail}
+            className="mb-10 w-full max-w-xl mx-auto bg-[#0C2421]/90 backdrop-blur-xl rounded-2xl p-3.5 sm:p-4 border border-emerald-500/30 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-2xl cursor-pointer hover:border-emerald-400 transition-colors"
+          >
             <div className="flex items-center gap-3 text-left px-2">
               <div className="w-10 h-10 rounded-xl bg-emerald-950/80 border border-emerald-500/40 flex items-center justify-center text-[#4EA840] shrink-0">
                 <Mail className="w-5 h-5" />
@@ -264,17 +268,18 @@ export function CinematicFooter() {
                 <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400">
                   Direct Inquiries & CV Submissions
                 </div>
-                <a
-                  href={`mailto:${email}`}
-                  className="text-sm sm:text-base font-bold text-white hover:text-emerald-300 transition-colors"
-                >
+                <div className="text-sm sm:text-base font-bold text-white hover:text-emerald-300 transition-colors">
                   {email}
-                </a>
+                </div>
               </div>
             </div>
 
             <button
-              onClick={handleCopyEmail}
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleCopyEmail();
+              }}
               className="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-mono font-bold text-white bg-emerald-900/60 hover:bg-emerald-800/80 transition-all flex items-center justify-center gap-2 border border-emerald-500/30 cursor-pointer"
             >
               {copied ? (
@@ -291,30 +296,42 @@ export function CinematicFooter() {
             </button>
           </div>
 
-          {/* Action Button Capsules */}
+          {/* Action Button Capsules with Intake Protocol Modal Triggers */}
           <div className="flex flex-wrap items-center justify-center gap-4">
             <MagneticButton
-              as="a"
-              href={`mailto:${email}?subject=Scholar%20Global%20Mobility%20Application`}
-              className="px-8 py-4 rounded-full bg-[#F5B942] hover:bg-[#E5A830] text-slate-950 font-bold text-sm sm:text-base shadow-xl shadow-amber-500/25 flex items-center gap-2 border border-amber-300/40 transition-all"
+              as="button"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('open-scholar-modal', { detail: { type: 'scholar' } }));
+                }
+              }}
+              className="px-8 py-4 rounded-full bg-[#F5B942] hover:bg-[#E5A830] text-slate-950 font-bold text-sm sm:text-base shadow-xl shadow-amber-500/25 flex items-center gap-2 border border-amber-300/40 transition-all cursor-pointer"
             >
               <span>Become a Scholar</span>
               <ArrowRight className="w-4 h-4" />
             </MagneticButton>
 
             <MagneticButton
-              as="a"
-              href={`mailto:${contactEmail}?subject=Institutional%20Partnership%20Inquiry`}
-              className="footer-glass-pill px-8 py-4 rounded-full text-white font-bold text-sm sm:text-base flex items-center gap-2 group"
+              as="button"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('open-scholar-modal', { detail: { type: 'institution' } }));
+                }
+              }}
+              className="footer-glass-pill px-8 py-4 rounded-full text-white font-bold text-sm sm:text-base flex items-center gap-2 group cursor-pointer"
             >
               <Mail className="w-4 h-4 text-emerald-300 group-hover:text-white transition-colors" />
               <span>Partner with Us</span>
             </MagneticButton>
 
             <MagneticButton
-              as="a"
-              href={`mailto:${contactEmail}?subject=Support%20Our%20Mission`}
-              className="footer-glass-pill px-6 py-4 rounded-full text-emerald-200 font-semibold text-sm flex items-center gap-2 hover:text-white"
+              as="button"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('open-scholar-modal', { detail: { type: 'endowment' } }));
+                }
+              }}
+              className="footer-glass-pill px-6 py-4 rounded-full text-emerald-200 font-semibold text-sm flex items-center gap-2 hover:text-white cursor-pointer"
             >
               <span>Support Mission</span>
               <Sparkles className="w-4 h-4 text-[#F5B942]" />

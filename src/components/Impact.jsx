@@ -92,7 +92,8 @@ export default function Impact() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-6 bg-[#0F2D28] rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-center relative overflow-hidden border border-emerald-500/30 shadow-2xl min-h-[520px]"
+            data-cursor="DRAG 3D"
+            className="lg:col-span-6 bg-[#0F2D28] rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-center relative overflow-hidden border border-emerald-500/30 shadow-2xl min-h-[520px] cursor-grab active:cursor-grabbing"
           >
             {/* Top Badge & Interactive Hint */}
             <div className="w-full flex items-center justify-between z-10 mb-2">

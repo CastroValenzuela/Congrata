@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import NumberTicker from '@/components/ui/number-ticker';
 import { 
   Compass, 
   AlertTriangle, 
@@ -15,38 +16,48 @@ import {
   TrendingUp,
   Waves,
   ShieldCheck,
-  Cpu
+  Cpu,
+  MapPin
 } from 'lucide-react';
 
 export default function AboutSection() {
   const planetaryMetrics = [
     {
-      stat: '4.5 B',
+      value: 4.5,
       unit: 'Years',
+      suffix: ' B',
+      decimalPlaces: 1,
       label: 'Earth Formation & Biosphere',
       desc: '10–20 million years are mathematically required for global biodiversity to recover following major planetary extinction events.',
       color: 'text-[#4EA840]',
       tag: 'Geological Baseline'
     },
     {
-      stat: '.17° C',
+      value: 0.17,
       unit: 'Rise / Decade',
+      prefix: '+',
+      suffix: '° C',
+      decimalPlaces: 2,
       label: 'Global Surface Warming',
       desc: 'Average rate of annual planetary temperature increase, driving urgent demand for cross-border clean technology transfer.',
       color: 'text-[#F5B942]',
       tag: 'Climate Threshold'
     },
     {
-      stat: '40 %',
+      value: 40,
       unit: 'Impaired',
+      suffix: ' %',
+      decimalPlaces: 0,
       label: 'Compromised US Lakes',
       desc: 'Over four in ten surveyed lakes in North America are compromised, threatening regional aquatic ecosystems and food webs.',
       color: 'text-emerald-300',
       tag: 'Water Ecosystem'
     },
     {
-      stat: '2.5 %',
+      value: 2.5,
       unit: 'Accessible',
+      suffix: ' %',
+      decimalPlaces: 1,
       label: 'Total Accessible Freshwater',
       desc: 'A scarce fraction of Earth water supports human and ecological survival, making breakthrough circular water filtration critical.',
       color: 'text-teal-300',
@@ -107,10 +118,17 @@ export default function AboutSection() {
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/80 text-xs font-bold uppercase tracking-wider text-emerald-300 mb-4 border border-emerald-500/30 shadow-sm backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/80 text-xs font-bold uppercase tracking-wider text-emerald-300 mb-3 border border-emerald-500/30 shadow-sm backdrop-blur-md">
             <Compass className="w-3.5 h-3.5 text-[#4EA840]" />
             <span>Consortium for Green Research & Technology Advancement</span>
           </div>
+
+          {/* GPS Telemetry Active Node Ribbon */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-black/40 border border-emerald-500/20 text-[10px] font-mono text-emerald-400/80 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#4EA840] animate-pulse" />
+            <span>NODES: UC BERKELEY [37.87°N, 122.27°W] • UNAM [19.33°N, 99.18°W] • ITESM [25.65°N, 100.28°W]</span>
+          </div>
+
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4 font-heading">
             Equipping Leaders for an <span className="text-[#4EA840]">Interconnected World</span>
           </h2>
@@ -124,7 +142,7 @@ export default function AboutSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {planetaryMetrics.map((item, idx) => (
               <motion.div
-                key={item.stat}
+                key={item.label}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -144,10 +162,14 @@ export default function AboutSection() {
                     </span>
                   </div>
 
-                  {/* Monumental Number (Maxmont Style) */}
-                  <div className={`text-5xl sm:text-6xl lg:text-7xl font-black ${item.color} mb-3 font-heading tracking-tighter leading-none drop-shadow-sm`}>
-                    {item.stat}
-                  </div>
+                  {/* Monumental Animated Number with NumberTicker */}
+                  <NumberTicker
+                    value={item.value}
+                    prefix={item.prefix || ''}
+                    suffix={item.suffix || ''}
+                    decimalPlaces={item.decimalPlaces}
+                    className={`text-5xl sm:text-6xl lg:text-7xl font-black ${item.color} mb-3 font-heading tracking-tighter leading-none drop-shadow-sm`}
+                  />
 
                   <h4 className="text-sm font-bold text-white mb-2 font-heading tracking-wide uppercase">
                     {item.label}
@@ -277,11 +299,12 @@ export default function AboutSection() {
               return (
                 <motion.div
                   key={focus.title}
+                  data-cursor="EXPLORE"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="rounded-3xl bg-[#0C2421]/90 backdrop-blur-xl border border-emerald-500/20 shadow-2xl hover:border-[#4EA840] hover:shadow-[0_20px_50px_rgba(78,168,64,0.15)] transition-all duration-400 overflow-hidden flex flex-col justify-between group"
+                  className="rounded-3xl bg-[#0C2421]/90 backdrop-blur-xl border border-emerald-500/20 shadow-2xl hover:border-[#4EA840] hover:shadow-[0_20px_50px_rgba(78,168,64,0.15)] transition-all duration-400 overflow-hidden flex flex-col justify-between group cursor-pointer"
                 >
                   {/* Visual Header Image with Micro-Badge Overlay (Pixl Bio Style) */}
                   <div className="relative h-48 w-full overflow-hidden bg-slate-900">

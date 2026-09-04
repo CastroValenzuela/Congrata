@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --color-brand-green: #4EA840;
+  --color-brand-green-dark: #3B8730;
+  --color-brand-teal: #15736B;
+  --color-brand-teal-dark: #0F5852;
+  --color-brand-amber: #F5B942;
+  --color-brand-amber-dark: #E2A32B;
+  --color-bg-base: #F8FAF9;
+  --color-bg-card: #FFFFFF;
+}
+
 @layer base {
   :root {
     --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -29,6 +42,16 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+  }
+}
+
+/* Hide native cursor when custom magnetic cursor is active (desktop fine-pointer only) */
+@media (pointer: fine) {
+  body.custom-cursor-active,
+  body.custom-cursor-active a,
+  body.custom-cursor-active button,
+  body.custom-cursor-active [data-cursor] {
+    cursor: none !important;
   }
 }
 
@@ -90,6 +113,16 @@
   box-shadow: 
     0 4px 15px rgba(78, 168, 64, 0.12),
     inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.dark-panel {
+  background: rgba(12, 36, 33, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(78, 168, 64, 0.22);
+  box-shadow: 
+    0 20px 50px -10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 /* Brand Text Gradients */
@@ -224,6 +257,19 @@
   animation: shimmer 2.5s infinite linear;
 }
 
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, -6%); }
+  40% { transform: translate(-8%, 3%); }
+  60% { transform: translate(4%, -12%); }
+  80% { transform: translate(-3%, 12%); }
+}
+
+.animate-grain {
+  animation: grain 0.5s steps(5) infinite;
+  will-change: transform;
+}
+
 .animate-spin-slow {
   animation: spin-slow 8s infinite linear;
 }
@@ -243,4 +289,48 @@
 .bg-dot-subtle {
   background-size: 24px 24px;
   background-image: radial-gradient(rgba(78, 168, 64, 0.15) 1px, transparent 1px);
+}
+
+/* ──────────────────────────────────────────────────────────
+   Tactile Button Compression (Active State Feedback)
+────────────────────────────────────────────────────────── */
+button,
+a[role="button"],
+.cta-button {
+  transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+button:active,
+a[role="button"]:active,
+.cta-button:active {
+  transform: scale(0.97);
+}
+
+/* ──────────────────────────────────────────────────────────
+   Depth-of-Field Focus (sibling dimming on hover)
+────────────────────────────────────────────────────────── */
+.dof-group:hover .dof-item {
+  opacity: 0.5;
+  filter: blur(1px);
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+.dof-group:hover .dof-item:hover {
+  opacity: 1;
+  filter: blur(0);
+}
+.dof-item {
+  transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+/* ──────────────────────────────────────────────────────────
+   Accessibility: Reduced Motion Overrides
+────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

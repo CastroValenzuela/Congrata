@@ -19,6 +19,10 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
+    // Respect prefers-reduced-motion accessibility preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
     // Initialize Lenis with cinematic momentum easing
     const lenis = new Lenis({
       duration: 1.25,

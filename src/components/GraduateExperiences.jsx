@@ -61,7 +61,7 @@ export default function GraduateExperiences() {
         </div>
 
         {/* Real Scholar Experience Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 dof-group">
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.name}
@@ -69,7 +69,7 @@ export default function GraduateExperiences() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.12 }}
-              className="bg-white rounded-3xl p-7 border border-slate-200/90 flex flex-col justify-between relative group shadow-lg shadow-slate-900/5 hover:border-[#4EA840] hover:shadow-xl transition-all"
+              className="bg-white rounded-3xl p-7 border border-slate-200/90 flex flex-col justify-between relative group shadow-lg shadow-slate-900/5 hover:border-[#4EA840] hover:shadow-xl transition-all dof-item cursor-pointer"
             >
               <div>
                 {/* Scholar Header */}

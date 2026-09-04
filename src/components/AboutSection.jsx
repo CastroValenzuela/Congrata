@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import NumberTicker from '@/components/ui/number-ticker';
+import SpotlightCard from '@/components/ui/spotlight-card';
 import { 
   Compass, 
   AlertTriangle, 
@@ -101,7 +102,7 @@ export default function AboutSection() {
   return (
     <section 
       id="about" 
-      className="pt-24 pb-36 sm:pb-44 relative overflow-hidden bg-[#071917] text-white rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] mt-8 sm:mt-12 relative z-10 border-t border-emerald-500/25 shadow-[0_-30px_70px_rgba(0,0,0,0.35)] before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-emerald-400/40 before:to-transparent"
+      className="pt-24 pb-36 sm:pb-44 relative overflow-hidden bg-[#071917] text-white rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-12 sm:-mt-16 relative z-10 border-t border-emerald-500/25 shadow-[0_-30px_70px_rgba(0,0,0,0.35)] before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-emerald-400/40 before:to-transparent"
     >
       
       {/* Background Topographic Wave SVG (Maxmont & Pixl Bio Sonar Aesthetic) */}
@@ -306,49 +307,51 @@ export default function AboutSection() {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="rounded-3xl bg-[#0C2421]/90 backdrop-blur-xl border border-emerald-500/20 shadow-2xl hover:border-[#4EA840] hover:shadow-[0_20px_50px_rgba(78,168,64,0.15)] transition-all duration-400 overflow-hidden flex flex-col justify-between group cursor-pointer"
                 >
-                  {/* Visual Header Image with Micro-Badge Overlay (Pixl Bio Style) */}
-                  <div className="relative h-48 w-full overflow-hidden bg-slate-900">
-                    <img
-                      src={focus.image}
-                      alt={focus.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0C2421] via-black/30 to-black/20" />
-                    
-                    {/* Track Pill */}
-                    <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-mono font-bold uppercase tracking-wider">
-                      <Icon className="w-3 h-3 text-[#4EA840]" />
-                      <span>{focus.track}</span>
+                  <SpotlightCard className="flex flex-col justify-between h-full">
+                    {/* Visual Header Image with Micro-Badge Overlay (Pixl Bio Style) */}
+                    <div className="relative h-48 w-full overflow-hidden bg-slate-900">
+                      <img
+                        src={focus.image}
+                        alt={focus.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0C2421] via-black/30 to-black/20" />
+                      
+                      {/* Track Pill */}
+                      <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[10px] font-mono font-bold uppercase tracking-wider">
+                        <Icon className="w-3 h-3 text-[#4EA840]" />
+                        <span>{focus.track}</span>
+                      </div>
+
+                      {/* Metric Badge */}
+                      <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
+                        <span className="text-xs font-semibold drop-shadow-sm font-heading">
+                          {focus.metric}
+                        </span>
+                        <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${focus.badgeBg} border`}>
+                          {focus.tag}
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Metric Badge */}
-                    <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-white">
-                      <span className="text-xs font-semibold drop-shadow-sm font-heading">
-                        {focus.metric}
-                      </span>
-                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${focus.badgeBg} border`}>
-                        {focus.tag}
-                      </span>
-                    </div>
-                  </div>
+                    {/* Body Text */}
+                    <div className="p-6 sm:p-8 flex flex-col justify-between flex-1">
+                      <div>
+                        <h5 className="text-lg sm:text-xl font-bold text-white font-heading mb-3 leading-snug group-hover:text-emerald-300 transition-colors">
+                          {focus.title}
+                        </h5>
 
-                  {/* Body Text */}
-                  <div className="p-6 sm:p-8 flex flex-col justify-between flex-1">
-                    <div>
-                      <h5 className="text-lg sm:text-xl font-bold text-white font-heading mb-3 leading-snug group-hover:text-emerald-300 transition-colors">
-                        {focus.title}
-                      </h5>
+                        <p className="text-slate-300 text-sm leading-relaxed font-light">
+                          {focus.desc}
+                        </p>
+                      </div>
 
-                      <p className="text-slate-300 text-sm leading-relaxed font-light">
-                        {focus.desc}
-                      </p>
+                      <div className="mt-6 pt-4 border-t border-emerald-950/80 flex items-center justify-between text-xs font-semibold text-emerald-400 group-hover:text-[#4EA840] transition-colors">
+                        <span>Explore Specialized Track</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                      </div>
                     </div>
-
-                    <div className="mt-6 pt-4 border-t border-emerald-950/80 flex items-center justify-between text-xs font-semibold text-emerald-400 group-hover:text-[#4EA840] transition-colors">
-                      <span>Explore Specialized Track</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
-                    </div>
-                  </div>
+                  </SpotlightCard>
                 </motion.div>
               );
             })}

@@ -18,6 +18,9 @@ export default function CustomCursor() {
     const isFinePointer = window.matchMedia('(pointer: fine)').matches;
     if (!isFinePointer) return;
 
+    // Hide native browser cursor when custom cursor is active
+    document.body.classList.add('custom-cursor-active');
+
     const dot = dotRef.current;
     const ring = ringRef.current;
     if (!dot || !ring) return;
@@ -77,6 +80,7 @@ export default function CustomCursor() {
     rafId = requestAnimationFrame(render);
 
     return () => {
+      document.body.classList.remove('custom-cursor-active');
       window.removeEventListener('mousemove', handleMouseMove);
       document.body.removeEventListener('mouseleave', handleMouseLeave);
       document.body.removeEventListener('mouseenter', handleMouseEnter);

@@ -106,7 +106,7 @@ export default function PhilanthropySection() {
   return (
     <section 
       id="giving" 
-      className="pt-24 pb-32 sm:pb-40 relative overflow-hidden bg-[#071917] text-white rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] mt-8 sm:mt-12 relative z-20 border-t border-emerald-500/25 shadow-[0_-30px_70px_rgba(0,0,0,0.35)] before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-emerald-400/40 before:to-transparent"
+      className="pt-24 pb-32 sm:pb-40 relative overflow-hidden bg-[#071917] text-white rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-12 sm:-mt-16 relative z-20 border-t border-emerald-500/25 shadow-[0_-30px_70px_rgba(0,0,0,0.35)] before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-emerald-400/40 before:to-transparent"
     >
       {/* Background Topographic Ambience */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none -z-10" />

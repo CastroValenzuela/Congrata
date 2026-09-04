@@ -223,7 +223,7 @@ export default function CardsStack() {
                       <img
                         src={card.image}
                         alt={card.title}
-                        className="w-full h-full object-cover object-center"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
 

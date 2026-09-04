@@ -254,7 +254,7 @@ function PhotoCard({
       className={cn(
         'overflow-hidden rounded-2xl cursor-pointer flex-shrink-0 transition-all duration-300 border shadow-md relative group',
         className,
-        isDimmed ? 'opacity-40 scale-95 border-slate-200' : 'opacity-100 scale-100 border-slate-200',
+        isDimmed ? 'opacity-40 scale-95 blur-[1px] border-slate-200' : 'opacity-100 scale-100 border-slate-200',
         isActive ? 'border-[#4EA840] shadow-xl shadow-emerald-500/20 ring-2 ring-[#4EA840]/50 scale-105 z-10' : ''
       )}
       onMouseEnter={() => onHover(member.id)}

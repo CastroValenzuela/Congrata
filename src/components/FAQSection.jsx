@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import ScrollReveal from '@/components/ui/scroll-reveal';
 import { 
   HelpCircle, 
   ChevronDown, 
@@ -80,22 +81,23 @@ export default function FAQSection() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 text-xs font-bold uppercase tracking-wider text-[#15736B] mb-4 border border-emerald-300/50 shadow-sm">
-            <HelpCircle className="w-3.5 h-3.5 text-[#4EA840]" />
-            <span>Consortium Clarity & Intelligence</span>
-          </div>
+        <ScrollReveal>
+          <div className="flex flex-col items-center text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/80 text-xs font-bold uppercase tracking-wider text-[#15736B] mb-4 border border-emerald-300/50 shadow-sm">
+              <HelpCircle className="w-3.5 h-3.5 text-[#4EA840]" />
+              <span>Consortium Clarity & Intelligence</span>
+            </div>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4 font-heading">
-            Frequently Asked <span className="text-gradient-green">Questions</span>
-          </h2>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4 font-heading">
+              Frequently Asked <span className="text-gradient-green">Questions</span>
+            </h2>
 
-          <p className="text-slate-600 max-w-2xl text-base sm:text-lg leading-relaxed font-light mb-8">
-            Essential answers on scientific eligibility, university MOUs, 60-day mobility grants, and 501(c)(3) philanthropic governance.
-          </p>
+            <p className="text-slate-600 max-w-2xl text-base sm:text-lg leading-relaxed font-light mb-8">
+              Essential answers on scientific eligibility, university MOUs, 60-day mobility grants, and 501(c)(3) philanthropic governance.
+            </p>
 
-          {/* 3 Audience Navigation Tabs */}
-          <div className="flex flex-wrap items-center justify-center p-1.5 rounded-2xl bg-white border border-slate-200 shadow-sm gap-1">
+            {/* 3 Audience Navigation Tabs */}
+            <div className="flex flex-wrap items-center justify-center p-1.5 rounded-2xl bg-white border border-slate-200 shadow-sm gap-1">
             <button
               type="button"
               onClick={() => {
@@ -145,6 +147,7 @@ export default function FAQSection() {
             </button>
           </div>
         </div>
+        </ScrollReveal>
 
         {/* Accordion Questions List */}
         <div className="space-y-4 max-w-4xl mx-auto mb-20">
@@ -162,12 +165,12 @@ export default function FAQSection() {
                 <button
                   type="button"
                   onClick={() => toggleAccordion(idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 cursor-pointer"
+                  className="w-full py-5 px-6 sm:px-8 flex items-center justify-between text-left transition-colors cursor-pointer"
                 >
-                  <span className="text-base sm:text-lg font-bold text-slate-900 font-heading">
+                  <span className="text-base sm:text-lg font-bold text-slate-900 pr-4 font-heading">
                     {item.q}
                   </span>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${
                     isOpen ? 'bg-emerald-100 text-[#15736B] rotate-180' : 'bg-slate-100 text-slate-500'
                   }`}>
                     <ChevronDown className="w-4 h-4" />
@@ -180,10 +183,10 @@ export default function FAQSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: 'easeInOut' }}
+                      transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-slate-600 font-light leading-relaxed border-t border-slate-100">
+                      <div className="px-6 sm:px-8 pb-6 text-sm sm:text-base text-slate-600 font-light leading-relaxed border-t border-slate-100 pt-4">
                         {item.a}
                       </div>
                     </motion.div>
@@ -195,10 +198,10 @@ export default function FAQSection() {
         </div>
 
         {/* ── Official Institutional "Your Inquiries" Card (Corona Del Mar, Phone, Email) ── */}
-        <div className="rounded-3xl p-8 sm:p-12 bg-white border border-slate-200/90 shadow-xl shadow-slate-900/5 max-w-4xl mx-auto">
+        <ScrollReveal delay={0.2} className="rounded-3xl p-8 sm:p-12 bg-white border border-slate-200/90 shadow-xl shadow-slate-900/5 max-w-4xl mx-auto">
           {/* Header Title with Amber Line Accent */}
           <div className="mb-10 text-left">
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-serif tracking-tight mb-3">
+            <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-3">
               Your Inquiries
             </h3>
             <div className="w-16 h-1 bg-[#F5B942] rounded-full" />
@@ -243,7 +246,7 @@ export default function FAQSection() {
             </div>
 
           </div>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

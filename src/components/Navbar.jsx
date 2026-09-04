@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,6 +34,11 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      {/* ── Reading Progress Bar ── */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-[#4EA840] via-[#15736B] to-[#F5B942] origin-left z-[60] shadow-[0_0_8px_rgba(78,168,64,0.5)]"
+        style={{ scaleX }}
+      />
       {/* ── Ultra-Glassmorphic Floating Navigation Capsule ── */}
       <div className="px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
         <div

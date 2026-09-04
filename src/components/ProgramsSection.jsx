@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import ScrollReveal from '@/components/ui/scroll-reveal';
 import { 
   GraduationCap, 
   Clock, 
@@ -60,21 +61,23 @@ export default function ProgramsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/90 text-xs font-bold uppercase tracking-wider text-[#15736B] mb-4 border border-emerald-300/60 shadow-sm">
-            <GraduationCap className="w-3.5 h-3.5 text-[#4EA840]" />
-            <span>Academic Programs</span>
+        <ScrollReveal>
+          <div className="flex flex-col items-center text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100/90 text-xs font-bold uppercase tracking-wider text-[#15736B] mb-4 border border-emerald-300/60 shadow-sm">
+              <GraduationCap className="w-3.5 h-3.5 text-[#4EA840]" />
+              <span>Academic Programs</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-4 font-heading">
+              Scholars <span className="text-gradient-green">Global Mobility</span>
+            </h2>
+            <p className="text-slate-600 max-w-3xl text-base sm:text-lg leading-relaxed font-light">
+              A transformative 60-day international research experience designed to expand the frontiers, analytical capabilities, and leadership of emerging STEM pioneers.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-4 font-heading">
-            Scholars <span className="text-gradient-green">Global Mobility</span>
-          </h2>
-          <p className="text-slate-600 max-w-3xl text-base sm:text-lg leading-relaxed font-light">
-            A transformative 60-day international research experience designed to expand the frontiers, analytical capabilities, and leadership of emerging STEM pioneers.
-          </p>
-        </div>
+        </ScrollReveal>
 
         {/* Featured 60-Day Immersive Card */}
-        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-emerald-900/10 mb-16 relative overflow-hidden shadow-xl shadow-emerald-950/5">
+        <ScrollReveal delay={0.15} className="bg-white rounded-3xl p-8 sm:p-12 border border-emerald-900/10 mb-16 relative overflow-hidden shadow-xl shadow-emerald-950/5">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Col: Narrative */}
@@ -149,7 +152,7 @@ export default function ProgramsSection() {
             </div>
 
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* 4-Step Executive Pipeline Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

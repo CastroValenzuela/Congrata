@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight, Phone, Mail, MapPin, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,36 +26,8 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      
-      {/* ── Official Brand Green Top Bar (Frosted Glass Finish) ── */}
-      <div className="bg-[#4EA840]/95 backdrop-blur-md text-white py-1.5 px-4 sm:px-6 lg:px-8 text-[11px] sm:text-xs font-medium tracking-wide border-b border-white/20 shadow-sm">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-4 sm:gap-6">
-            <a 
-              href="tel:9492449268" 
-              className="flex items-center gap-1.5 hover:text-emerald-100 transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5" />
-              <span>(949) 244-9268</span>
-            </a>
-            <a 
-              href="mailto:info@congrata.com" 
-              className="flex items-center gap-1.5 hover:text-emerald-100 transition-colors"
-            >
-              <Mail className="w-3.5 h-3.5" />
-              <span>info@congrata.com</span>
-            </a>
-          </div>
-
-          <div className="hidden md:flex items-center gap-1.5 text-emerald-100">
-            <MapPin className="w-3.5 h-3.5" />
-            <span>Corona Del Mar, CA • P.O. Box 1197</span>
-          </div>
-        </div>
-      </div>
-
       {/* ── Ultra-Glassmorphic Floating Navigation Capsule ── */}
-      <div className="px-4 sm:px-6 lg:px-8 pt-3">
+      <div className="px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6">
         <div
           className={`max-w-7xl mx-auto rounded-3xl transition-all duration-400 ${
             scrolled

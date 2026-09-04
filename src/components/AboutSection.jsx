@@ -61,7 +61,7 @@ export default function AboutSection() {
       title: 'Healthcare & Biomedical Phenomics',
       desc: 'Identifying reliable, low-cost biomedical therapies, micro-sensing technologies, and equitable medication pipelines for vulnerable communities.',
       tag: 'Biomedical Innovation',
-      image: 'https://images.unsplash.com/photo-1579165466791-788226ab6fb3?q=80&w=800&auto=format&fit=crop',
+      image: '/images/biomedical-phenomics.jpg',
       metric: 'Affordable Therapeutics',
       badgeBg: 'bg-rose-950/80 text-rose-300 border-rose-800/40'
     },
@@ -71,7 +71,7 @@ export default function AboutSection() {
       title: 'Smart Energy & AI Grid Management',
       desc: 'Pioneering energy efficiency, software architectures, and automated distribution systems in the management of big data and solar storage.',
       tag: 'Decarbonization & Systems',
-      image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=800&auto=format&fit=crop',
+      image: '/images/smart-energy.jpg',
       metric: 'AI-Driven Clean Grids',
       badgeBg: 'bg-amber-950/80 text-amber-300 border-amber-800/40'
     },
@@ -81,7 +81,7 @@ export default function AboutSection() {
       title: 'Sustainable Agriculture & Soil Bio-Tech',
       desc: 'A disruptive approach to regional sustainable farming, rhizosphere microbiome resilience, and regenerative regional crop cycles.',
       tag: 'AgTech & Food Security',
-      image: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?q=80&w=800&auto=format&fit=crop',
+      image: '/images/sustainable-agro.jpg',
       metric: 'Circular Food Systems',
       badgeBg: 'bg-emerald-950/80 text-emerald-300 border-emerald-800/40'
     },

@@ -12,6 +12,7 @@ import TeamSection from './components/TeamSection';
 import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import ScrollExpandMedia from './components/ui/scroll-expansion-hero';
+import MetricIntroLoader from './components/ui/metric-intro-loader';
 import { Sparkles, ArrowRight, ArrowUpRight, Leaf } from 'lucide-react';
 import MagicButton from './components/ui/MagicButton';
 
@@ -28,6 +29,13 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#F8FAF9] text-slate-800 selection:bg-emerald-500/20 selection:text-emerald-900">
+      {/* Metric-Style Signature Intro Transition */}
+      <MetricIntroLoader
+        videoSrc={videoMedia.src}
+        posterSrc={videoMedia.poster}
+        wordmark="CONGRATA"
+      />
+
       {/* Navigation Header with Green Top Bar */}
       <Navbar />
 

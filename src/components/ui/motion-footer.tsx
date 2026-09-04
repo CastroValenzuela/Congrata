@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight, Sparkles, Mail, Phone, MapPin, ArrowUp, Heart } from "lucide-react";
+import { ArrowUpRight, Sparkles, Mail, Phone, MapPin, ArrowUp } from "lucide-react";
 
 // Register ScrollTrigger safely for React
 if (typeof window !== "undefined") {
@@ -21,13 +21,13 @@ const STYLES = `
 .cinematic-footer-wrapper {
   font-family: 'Plus Jakarta Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
-  background-color: #0B2521;
+  background-color: #071F1B;
   color: #F8FAF9;
 }
 
 @keyframes footer-breathe {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
-  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.8; }
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.35; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.75; }
 }
 
 @keyframes footer-scroll-marquee {
@@ -59,16 +59,16 @@ const STYLES = `
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
 }
 
 /* Emerald & Teal Aurora Glow */
 .footer-aurora {
   background: radial-gradient(
     circle at 50% 50%, 
-    rgba(78, 168, 64, 0.25) 0%, 
-    rgba(21, 115, 107, 0.20) 40%, 
+    rgba(78, 168, 64, 0.28) 0%, 
+    rgba(21, 115, 107, 0.22) 40%, 
     transparent 70%
   );
 }
@@ -87,7 +87,7 @@ const STYLES = `
 }
 
 .footer-glass-pill:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.16);
   border-color: rgba(78, 168, 64, 0.5);
   box-shadow: 
       0 20px 40px -10px rgba(78, 168, 64, 0.25), 
@@ -103,19 +103,19 @@ const STYLES = `
   letter-spacing: -0.04em;
   font-family: 'Outfit', sans-serif;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 65%);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.09);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, transparent 65%);
   -webkit-background-clip: text;
   background-clip: text;
 }
 
 /* Metallic Text Glow */
 .footer-text-glow {
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.6) 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.65) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0px 0px 30px rgba(78, 168, 64, 0.25));
+  filter: drop-shadow(0px 0px 30px rgba(78, 168, 64, 0.3));
   font-family: 'Outfit', sans-serif;
 }
 `;
@@ -223,18 +223,21 @@ export function CinematicFooter() {
 
     // React strict mode compatible GSAP context cleanup
     const ctx = gsap.context(() => {
+      // Refresh ScrollTrigger so calculations are 100% accurate after page layout
+      ScrollTrigger.refresh();
+
       // Background Parallax
       gsap.fromTo(
         giantTextRef.current,
-        { y: "10vh", scale: 0.85, opacity: 0 },
+        { y: "15vh", scale: 0.82, opacity: 0.2 },
         {
           y: "0vh",
           scale: 1,
           opacity: 1,
-          ease: "power1.out",
+          ease: "none",
           scrollTrigger: {
             trigger: wrapperRef.current,
-            start: "top 80%",
+            start: "top bottom",
             end: "bottom bottom",
             scrub: 1,
           },
@@ -244,15 +247,15 @@ export function CinematicFooter() {
       // Staggered Content Reveal
       gsap.fromTo(
         [headingRef.current, linksRef.current],
-        { y: 50, opacity: 0 },
+        { y: 60, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           stagger: 0.15,
-          ease: "power3.out",
+          ease: "power2.out",
           scrollTrigger: {
             trigger: wrapperRef.current,
-            start: "top 40%",
+            start: "top 75%",
             end: "bottom bottom",
             scrub: 1,
           },
@@ -272,23 +275,22 @@ export function CinematicFooter() {
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       
       {/* 
-        The "Curtain Reveal" Wrapper:
-        It sits in standard flow. Because it has clip-path, its contents
-        are ONLY visible within its bounding box. 
+        The Native Curtain Reveal Architecture:
+        Wrapper holds the scroll height (h-screen).
+        The footer is sticky to the bottom of the viewport underneath the main content,
+        so when main finishes, it reveals the footer smoothly like a curtain!
       */}
       <div
         ref={wrapperRef}
-        className="relative h-screen w-full"
-        style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
+        className="relative h-screen w-full -z-10"
       >
-        {/* The actual footer stays fixed to the viewport underneath everything */}
-        <footer className="fixed bottom-0 left-0 flex h-screen w-full flex-col justify-between overflow-hidden cinematic-footer-wrapper">
+        <footer className="sticky bottom-0 left-0 flex h-screen w-full flex-col justify-between overflow-hidden cinematic-footer-wrapper">
           
           {/* Ambient Light & Grid Background */}
           <div className="footer-aurora absolute left-1/2 top-1/2 h-[60vh] w-[80vw] -translate-x-1/2 -translate-y-1/2 animate-footer-breathe rounded-[50%] blur-[90px] pointer-events-none z-0" />
           <div className="footer-bg-grid absolute inset-0 z-0 pointer-events-none" />
 
-          {/* Giant background text */}
+          {/* Giant background text with Parallax */}
           <div
             ref={giantTextRef}
             className="footer-giant-bg-text absolute -bottom-[4vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none"

@@ -13,7 +13,6 @@ import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import ScrollExpandMedia from './components/ui/scroll-expansion-hero';
 import { Sparkles, ArrowRight, ArrowUpRight, Leaf } from 'lucide-react';
-import MagicButton from './components/ui/MagicButton';
 
 export default function App() {
   const videoMedia = {
@@ -31,8 +30,9 @@ export default function App() {
       {/* Navigation Header with Green Top Bar */}
       <Navbar />
 
-      {/* Main Content: Exclusive Video Expand Hero */}
-      <main>
+      {/* Main Content Area - Sits at z-10 on top of the footer to enable curtain reveal */}
+      <main className="relative z-10 bg-[#F8FAF9] w-full shadow-[0_30px_100px_rgba(0,0,0,0.25)]">
+        {/* Video Expand Hero with Action Bar */}
         <ScrollExpandMedia
           mediaType="video"
           mediaSrc={videoMedia.src}
@@ -85,24 +85,24 @@ export default function App() {
               </a>
             </div>
           </div>
-
-          {/* Academic Partners Continuous Marquee Slider */}
-          <AcademicPartners />
-
-          {/* Structured Landing Page Sections */}
-          <AboutSection />
-          <ProgramsSection />
-          <PillarsBento />
-          <FoundersStory />
-          <Impact />
-          <GraduateExperiences />
-          <CredibilitySnapshot />
-          <TeamSection />
-          <CTASection />
         </ScrollExpandMedia>
+
+        {/* Academic Partners Continuous Marquee Slider */}
+        <AcademicPartners />
+
+        {/* Structured Landing Page Sections - Direct children of main so sticky works smoothly */}
+        <AboutSection />
+        <ProgramsSection />
+        <PillarsBento />
+        <FoundersStory />
+        <Impact />
+        <GraduateExperiences />
+        <CredibilitySnapshot />
+        <TeamSection />
+        <CTASection />
       </main>
 
-      {/* Footer */}
+      {/* Cinematic Curtain Reveal Footer */}
       <Footer />
     </div>
   );

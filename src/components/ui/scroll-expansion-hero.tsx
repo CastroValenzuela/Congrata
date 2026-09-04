@@ -188,7 +188,7 @@ export const ScrollExpandMedia = ({
   return (
     <div
       ref={sectionRef}
-      className="relative w-full overflow-x-hidden bg-[#F8FAF9]"
+      className="relative w-full bg-[#F8FAF9]"
     >
       {/* ── 100dvh Hero Stage with 3D Mouse Parallax ── */}
       <div 
@@ -310,14 +310,9 @@ export const ScrollExpandMedia = ({
 
       {/* ── Content Revealed after Expansion ({children}) ── */}
       {showContent && (
-        <motion.div
-          className="relative z-20 flex flex-col w-full bg-[#F8FAF9] pb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className="relative z-20 flex flex-col w-full bg-[#F8FAF9] pb-16">
           {children}
-        </motion.div>
+        </div>
       )}
     </div>
   );

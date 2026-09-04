@@ -1,7 +1,68 @@
 'use client';
 
 import * as React from 'react';
+import { motion, HTMLMotionProps } from 'framer-motion';
+import { cn } from '@/lib/utils';
 import { PlaneTakeoff, ShieldCheck, Rocket, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
+
+interface CardStickyProps extends HTMLMotionProps<'div'> {
+  index?: number;
+  incrementY?: number;
+  incrementZ?: number;
+}
+
+export const CardsStackContainer = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLProps<HTMLDivElement>
+>(({ children, className, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn('relative w-full', className)}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+});
+CardsStackContainer.displayName = 'CardsStackContainer';
+
+export const CardSticky = React.forwardRef<HTMLDivElement, CardStickyProps>(
+  (
+    {
+      index = 1,
+      incrementY = 32,
+      incrementZ = 10,
+      children,
+      className,
+      style,
+      ...props
+    },
+    ref,
+  ) => {
+    // Progressive sticky offset below the floating navbar
+    const y = 96 + index * incrementY;
+    const z = index * incrementZ;
+
+    return (
+      <motion.div
+        ref={ref}
+        layout="position"
+        style={{
+          top: y,
+          zIndex: index + 10,
+          backfaceVisibility: 'hidden',
+          ...style,
+        }}
+        className={cn('sticky', className)}
+        {...props}
+      >
+        {children}
+      </motion.div>
+    );
+  },
+);
+CardSticky.displayName = 'CardSticky';
 
 export const PILLARS_DATA = [
   {
@@ -72,27 +133,24 @@ export default function CardsStack() {
             Our Three <span className="text-gradient-green">Pillars</span>
           </h2>
           <p className="text-slate-600 max-w-2xl text-base sm:text-lg leading-relaxed font-light">
-            Scroll down to see the three dimensions stack into place, accelerating scholars from foundational discovery to global impact.
+            A comprehensive, three-dimensional model engineered to accelerate scholars from foundational discovery to global impact.
           </p>
         </div>
 
-        {/* ── True Sticky Stacking Cards Deck (Rock Solid Native CSS) ── */}
-        <div className="relative w-full pb-32">
+        {/* ── Official 21st.dev CardsStackContainer ── */}
+        <CardsStackContainer className="space-y-16 sm:space-y-24 pb-28">
           {PILLARS_DATA.map((card, index) => {
             const Icon = card.icon;
-            // Progressive top offset so Card 1 and Card 2 remain visible at the top as a tabbed deck
-            const topOffset = 110 + index * 42;
 
             return (
-              <div
+              <CardSticky
                 key={card.id}
-                className="sticky mb-[24vh] last:mb-0 transition-all duration-300"
-                style={{
-                  top: `${topOffset}px`,
-                  zIndex: index + 10,
-                }}
+                index={index + 1}
+                incrementY={36}
+                incrementZ={10}
+                className="w-full"
               >
-                <div className="w-full rounded-3xl bg-white border border-emerald-900/15 shadow-[0_25px_60px_rgba(21,115,107,0.18)] ring-1 ring-white/90 overflow-hidden">
+                <div className="w-full rounded-3xl bg-white/95 backdrop-blur-2xl border border-emerald-900/15 shadow-[0_20px_50px_rgba(21,115,107,0.14)] ring-1 ring-white/80 overflow-hidden transition-all duration-300 hover:shadow-[0_28px_70px_rgba(21,115,107,0.20)]">
                   <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[460px] lg:min-h-[500px]">
                     
                     {/* Left Column: Text & Content (Span 7) */}
@@ -179,7 +237,7 @@ export default function CardsStack() {
                             Pillar Track
                           </div>
                           <div className="text-xs font-bold text-slate-900 font-heading">
-                            CONGRATA Foundation
+                            CONGRATA Model
                           </div>
                         </div>
                       </div>
@@ -187,10 +245,10 @@ export default function CardsStack() {
 
                   </div>
                 </div>
-              </div>
+              </CardSticky>
             );
           })}
-        </div>
+        </CardsStackContainer>
 
       </div>
     </section>

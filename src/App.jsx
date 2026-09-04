@@ -13,6 +13,7 @@ import CTASection from './components/CTASection';
 import Footer from './components/Footer';
 import ScrollExpandMedia from './components/ui/scroll-expansion-hero';
 import { Sparkles, ArrowRight, ArrowUpRight, Leaf } from 'lucide-react';
+import MagicButton from './components/ui/MagicButton';
 
 export default function App() {
   const videoMedia = {
@@ -26,17 +27,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#071F1B] text-slate-800 selection:bg-emerald-500/20 selection:text-emerald-900 overflow-x-hidden">
+    <div className="min-h-screen bg-[#F8FAF9] text-slate-800 selection:bg-emerald-500/20 selection:text-emerald-900">
       {/* Navigation Header with Green Top Bar */}
       <Navbar />
 
-      {/* 
-        MAIN CONTENT AREA
-        High z-index, solid background, rounded bottom corners, and shadow so that
-        the user scrolls down and reveals the footer curtain securely underneath.
-      */}
-      <main className="relative z-10 w-full min-h-[120vh] bg-[#F8FAF9] shadow-[0_35px_100px_rgba(0,0,0,0.35)] rounded-b-[2.5rem] border-b border-emerald-900/15">
-        {/* Video Expand Hero with Action Bar */}
+      {/* Main Content: Exclusive Video Expand Hero */}
+      <main>
         <ScrollExpandMedia
           mediaType="video"
           mediaSrc={videoMedia.src}
@@ -89,24 +85,24 @@ export default function App() {
               </a>
             </div>
           </div>
+
+          {/* Academic Partners Continuous Marquee Slider */}
+          <AcademicPartners />
+
+          {/* Structured Landing Page Sections */}
+          <AboutSection />
+          <ProgramsSection />
+          <PillarsBento />
+          <FoundersStory />
+          <Impact />
+          <GraduateExperiences />
+          <CredibilitySnapshot />
+          <TeamSection />
+          <CTASection />
         </ScrollExpandMedia>
-
-        {/* Academic Partners Continuous Marquee Slider */}
-        <AcademicPartners />
-
-        {/* Structured Landing Page Sections */}
-        <AboutSection />
-        <ProgramsSection />
-        <PillarsBento />
-        <FoundersStory />
-        <Impact />
-        <GraduateExperiences />
-        <CredibilitySnapshot />
-        <TeamSection />
-        <CTASection />
       </main>
 
-      {/* Cinematic Curtain Reveal Footer */}
+      {/* Footer */}
       <Footer />
     </div>
   );

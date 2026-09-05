@@ -147,23 +147,20 @@ export function Globe({
     dotsRef.current = dots;
   }, []);
 
-  // Track canvas dimensions and visibility
-  const dimensionsRef = useRef<{ w: number; h: number; dpr: number }>({ w: 0, h: 0, dpr: 1 });
-  const isVisibleRef = useRef(true);
-
   const draw = useCallback(() => {
-    if (!isVisibleRef.current) {
-      animRef.current = requestAnimationFrame(draw);
-      return;
-    }
-
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const { w, h, dpr } = dimensionsRef.current;
+    const dpr = window.devicePixelRatio || 1;
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
     if (w === 0 || h === 0) return;
+
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.scale(dpr, dpr);
 
     const cx = w / 2;
     const cy = h / 2;
@@ -306,41 +303,8 @@ export function Globe({
   }, [dotColor, arcColor, markerColor, autoRotateSpeed, connections, markers]);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    // ResizeObserver: only update canvas dimensions when actually resized
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const { width, height } = entry.contentRect;
-        const dpr = window.devicePixelRatio || 1;
-        if (width > 0 && height > 0) {
-          canvas.width = width * dpr;
-          canvas.height = height * dpr;
-          const ctx = canvas.getContext("2d");
-          if (ctx) ctx.scale(dpr, dpr);
-          dimensionsRef.current = { w: width, h: height, dpr };
-        }
-      }
-    });
-    resizeObserver.observe(canvas);
-
-    // IntersectionObserver: pause rendering when globe is offscreen
-    const intersectionObserver = new IntersectionObserver(
-      (entries) => {
-        isVisibleRef.current = entries[0]?.isIntersecting ?? true;
-      },
-      { threshold: 0 }
-    );
-    intersectionObserver.observe(canvas);
-
     animRef.current = requestAnimationFrame(draw);
-
-    return () => {
-      cancelAnimationFrame(animRef.current);
-      resizeObserver.disconnect();
-      intersectionObserver.disconnect();
-    };
+    return () => cancelAnimationFrame(animRef.current);
   }, [draw]);
 
   // Pointer drag event handlers

@@ -249,7 +249,7 @@ export function CinematicFooter() {
         glowing specular rim, and zero jarring gaps.
       */}
       <section
-        id="engage"
+        id="contact"
         className="relative w-full overflow-hidden cinematic-footer-wrapper rounded-t-[2.5rem] sm:rounded-t-[3.5rem] lg:rounded-t-[4.5rem] -mt-12 sm:-mt-16 z-50 border-t border-emerald-500/30 shadow-[0_-35px_80px_rgba(0,0,0,0.45)] before:absolute before:inset-x-0 before:top-0 before:h-[1px] before:bg-gradient-to-r before:from-transparent before:via-emerald-400/40 before:to-transparent"
       >
         {/* Ambient Aurora Light & Grid */}

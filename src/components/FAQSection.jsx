@@ -197,56 +197,33 @@ export default function FAQSection() {
           })}
         </div>
 
-        {/* ── Official Institutional "Your Inquiries" Card (Corona Del Mar, Phone, Email) ── */}
-        <ScrollReveal delay={0.2} className="rounded-3xl p-8 sm:p-12 bg-white border border-slate-200/90 shadow-xl shadow-slate-900/5 max-w-4xl mx-auto">
-          {/* Header Title with Amber Line Accent */}
-          <div className="mb-10 text-left">
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading tracking-tight mb-3">
-              Your Inquiries
-            </h3>
-            <div className="w-16 h-1 bg-[#F5B942] rounded-full" />
+        {/* Subtle Institutional Contact Prompt */}
+        <div className="max-w-xl mx-auto text-center pt-8 pb-4 border-t border-slate-200/80">
+          <p className="text-slate-600 text-sm sm:text-base font-light mb-4">
+            Have further questions about fellowships, university partnerships, or philanthropic endowments?
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#15736B] hover:bg-[#0F5852] text-white text-xs font-bold transition-all shadow-md shadow-teal-900/15 cursor-pointer"
+            >
+              <span>Headquarters & Inquiries</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('open-scholar-modal', { detail: { type: 'institution' } }));
+                }
+              }}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-emerald-50 hover:bg-emerald-100 text-[#15736B] border border-emerald-200/80 text-xs font-bold transition-all cursor-pointer shadow-sm"
+            >
+              <Mail className="w-3.5 h-3.5 text-[#4EA840]" />
+              <span>Direct Intake Message</span>
+            </button>
           </div>
-
-          {/* 3-Column Official Contact Info */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 text-left">
-            
-            {/* Col 1: Corona Del Mar */}
-            <div className="space-y-2">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-slate-900">
-                CORONA DEL MAR
-              </h4>
-              <p className="text-sm text-slate-600 font-light leading-relaxed">
-                P.O. Box 1197 <br />
-                Corona Del Mar, CA 92625
-              </p>
-            </div>
-
-            {/* Col 2: Phone */}
-            <div className="space-y-2">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-slate-900">
-                PHONE
-              </h4>
-              <p className="text-sm text-slate-600 font-light leading-relaxed">
-                <a href="tel:9492449268" className="hover:text-[#15736B] transition-colors font-medium">
-                  (949) 244-9268
-                </a>
-              </p>
-            </div>
-
-            {/* Col 3: Email */}
-            <div className="space-y-2">
-              <h4 className="text-xs font-mono font-bold uppercase tracking-widest text-slate-900">
-                EMAIL
-              </h4>
-              <p className="text-sm text-slate-600 font-light leading-relaxed">
-                <a href="mailto:luisa@congrata.com" className="hover:text-[#15736B] transition-colors font-medium text-emerald-800">
-                  luisa@congrata.com
-                </a>
-              </p>
-            </div>
-
-          </div>
-        </ScrollReveal>
+        </div>
 
       </div>
     </section>
